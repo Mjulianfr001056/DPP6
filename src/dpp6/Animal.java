@@ -11,5 +11,6 @@ package dpp6;
 public abstract class Animal {
     public abstract void suara();
     
+    public abstract void gerakan();
     
 }
