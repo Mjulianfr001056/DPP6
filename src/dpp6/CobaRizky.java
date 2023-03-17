@@ -11,6 +11,6 @@ package dpp6;
 public class CobaRizky {
     
     public static void main(String[] args) {
-        System.out.println("Coba GitHub");
+        System.out.println("Coba GitHub Rizky");
     }
 }
