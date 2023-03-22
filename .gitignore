@@ -1,6 +1,5 @@
 /build/
 *.xml
 *.iml
-*.properties
 *.xml
 /dist/
