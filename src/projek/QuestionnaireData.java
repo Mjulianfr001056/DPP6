@@ -1,10 +1,10 @@
 
 package projek;
 
-public class Result {
+public class QuestionnaireData {
     
-    private boolean konfirmasi=false;
-    private int kondisiPerusahaan=0; 
+    private QuestionnaireValidator<Boolean> confirmed;
+    private int kondisiPerusahaan=0;
     private boolean tanamanPangan=false;
     private boolean hortikultura=false;
     private boolean perkebunan=false;
@@ -12,12 +12,12 @@ public class Result {
     private boolean kehutanan=false;
     private boolean perikanan=false;
 
-    public boolean isKonfirmasi() {
-        return konfirmasi;
+    public boolean getConfirmed() {
+        return confirmed.getAttribute().booleanValue();
     }
 
-    public void setKonfirmasi(boolean konfirmasi) {
-        this.konfirmasi = konfirmasi;
+    public void setConfirmed(String confirmed) throws QuestionnaireException{
+        this.confirmed = new BooleanField(confirmed);
     }
 
     public int getKondisiPerusahaan() {
@@ -77,3 +77,7 @@ public class Result {
     }
 
 }
+
+/*
+TODO sesuaikan lagi get dan set nya
+ */

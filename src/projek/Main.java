@@ -75,3 +75,10 @@ public class Main {
         tampilMenu();        
     }
 }
+
+/*
+TODO
+1. Buat setiap data dimasukkan 1 1 trus kalo gagal diulang lgi di field itu lagi
+2. Pakai try-catch aja cukup keknya
+3. Semua input pakai String
+ */

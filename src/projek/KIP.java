@@ -10,53 +10,95 @@ package projek;
  */
 public class KIP {
     //properties
-    private String kodeProv;
-    private String kodeKab;
-    private String kodeKec;
+    private KIPValidator kodeProvinsi;
+    private KIPValidator kodeKabupaten;
+    private String kodeKecamatan;
     private String kodeKJU;
-    private String noUrutKabKot;
-    
+    private String noUrutKabupatenKota;
+    /*
+    TODO Ubah Attribut
+    Ubah atribut pakai Interface KIP Validator semua
+     */
     //constructor
-    public KIP (){
-  
+
+
+    public KIP() {
     }
-    
+
+    public KIP(String kodeProvinsi, String kodeKabupaten, String kodeKecamatan, String kodeKJU, String noUrutKabupatenKota) throws KIPException{
+        this.kodeProvinsi = new KodeProvinsiValidator(kodeProvinsi);
+        this.kodeKabupaten = new KodeKabupatenValidator(kodeKabupaten);
+        this.kodeKecamatan = kodeKecamatan;
+        this.kodeKJU = kodeKJU;
+        this.noUrutKabupatenKota = noUrutKabupatenKota;
+
+        /*
+        TODO Ubah constructor
+        1. Ubah semua atribut kode pakai new KodeValidator
+        2. Sesuaikan nama validatornya dengan atribut tsb karena validasinya beda-beda kan
+         */
+    }
+
     //method
-    public String getKodeProv(){
-        return this.kodeProv;
+//    public String getKodeProvinsi(){
+//        return this.kodeProvinsi;
+//    }
+//
+//    public void setKodeProvinsi(String kode){
+//        this.kodeProvinsi = kode;
+//    }
+//
+//    public String getKodeKabupaten(){
+//        return this.kodeKabupaten;
+//    }
+//
+//    public void setKodeKabupaten(String kode){
+//        this.kodeKabupaten = kode;
+//    }
+//
+//        public String getKodeKecamatan(){
+//        return this.kodeKecamatan;
+//    }
+//
+//    public void setKodeKecamatan(String kode){
+//        this.kodeKecamatan = kode;
+//    }
+//
+//        public String getKodeKJU(){
+//        return this.kodeKJU;
+//    }
+//
+//    public void setKodeKJU(String kode){
+//        this.kodeKJU = kode;
+//    }
+
+
+    public String getKodeKabupaten() {
+        return this.kodeKabupaten.getCode();
     }
-    
-    public void setKodeProv(String kode){
-        this.kodeProv = kode;
-    }
-    
-    public String getKodeKab(){
-        return this.kodeKab;
-    }
-    
-    public void setKodeKab(String kode){
-        this.kodeKab = kode;
-    }
-    
-        public String getKodeKec(){
-        return this.kodeKec;
-    }
-    
-    public void setKodeKec(String kode){
-        this.kodeKec = kode;
-    }
-    
-        public String getKodeKJU(){
-        return this.kodeKJU;
-    }
-    
-    public void setKodeKJU(String kode){
-        this.kodeKJU = kode;
-    }
-    
+
     @Override
     public String toString(){
-        return "Kode Provinsi : "+this.kodeProv+", Kode Kabupaten : 0"+this.kodeKab+", Kode Kecamatan : "+this.kodeKec+", Kode KJU : "+this.kodeKJU+", No. Urut : "+this.noUrutKabKot;
+        return "Kode Provinsi : "+this.kodeProvinsi +", Kode Kabupaten : 0"+this.kodeKabupaten +", Kode Kecamatan : "+this.kodeKecamatan +", Kode KJU : "+this.kodeKJU+", No. Urut : "+this.noUrutKabupatenKota;
+    }
+
+    public static void main(String[] args) {
+        //Testing code goes here
+        KIP kip = new KIP();
+        try{
+            kip = new KIP("02", "1", "0", "0", "0");
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        /*
+        TODO Testdrive
+        misal udh semua dibuat, coba masukin KIP yang pake kasus riil, klo berhasil bisa pull request yak
+         */
+
+        //System.out.println(kip.getKodeKabupaten());
+
     }
     
 }

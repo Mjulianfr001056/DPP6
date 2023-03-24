@@ -9,9 +9,20 @@ package projek;
  * @author ACER
  */
 public class NomorTelepon extends NomorKontak{
+    public NomorTelepon() {
+    }
+//    @Override
+//    public void cetakNomor() {
+//        System.out.println("(" + nomorKontak.substring(0, 3) + ")" + nomorKontak.substring(4, nomorKontak.length()) + ")");
+//    }
 
     @Override
-    public void cetakNomor() {      
-        System.out.println("(" + nomor.substring(0, 3) + ")" + nomor.substring(4,nomor.length()) + ")"); 
+    public void cetakNomor() {
+
     }
 }
+
+/*
+    TODO Implementasi NomorTelepon
+    Ini tinggal nyamakan dengan yang di Nomor Faksimile
+ */
