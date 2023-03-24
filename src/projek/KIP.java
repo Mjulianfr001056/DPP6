@@ -21,6 +21,10 @@ public class KIP {
      */
     //constructor
 
+
+    public KIP() {
+    }
+
     public KIP(String kodeProvinsi, String kodeKabupaten, String kodeKecamatan, String kodeKJU, String noUrutKabupatenKota) throws KIPException{
         this.kodeProvinsi = new KodeProvinsiValidator(kodeProvinsi);
         this.kodeKabupaten = new KodeKabupatenValidator(kodeKabupaten);
@@ -67,10 +71,34 @@ public class KIP {
 //    public void setKodeKJU(String kode){
 //        this.kodeKJU = kode;
 //    }
-    
+
+
+    public String getKodeKabupaten() {
+        return this.kodeKabupaten.getCode();
+    }
+
     @Override
     public String toString(){
         return "Kode Provinsi : "+this.kodeProvinsi +", Kode Kabupaten : 0"+this.kodeKabupaten +", Kode Kecamatan : "+this.kodeKecamatan +", Kode KJU : "+this.kodeKJU+", No. Urut : "+this.noUrutKabupatenKota;
+    }
+
+    public static void main(String[] args) {
+        //Testing code goes here
+        KIP kip = new KIP();
+        try{
+            kip = new KIP("02", "1", "0", "0", "0");
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        /*
+        TODO Testdrive
+        misal udh semua dibuat, coba masukin KIP yang pake kasus riil, klo berhasil bisa pull request yak
+         */
+
+        //System.out.println(kip.getKodeKabupaten());
+
     }
     
 }

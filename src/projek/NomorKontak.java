@@ -9,13 +9,10 @@ package projek;
  * @author ACER
  */
 abstract class NomorKontak {
-    protected String nomor;
+    protected ContactValidator nomorKontak;
     
-    public String getNomor(){
-        return nomor;
-    }
-    public void setNomor(String nomor){
-        this.nomor = nomor;
+    public String getNomorKontak(){
+        return nomorKontak.getNomor();
     }
     
     abstract public void cetakNomor();

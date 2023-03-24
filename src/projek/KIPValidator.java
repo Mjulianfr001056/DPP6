@@ -1,14 +1,15 @@
 package projek;
 
-public interface KIPValidator{
-    KIPValidator isValid() throws KIPException;
+public interface KIPValidator  {
+    String isValid(String kode) throws KIPException ;
+    String getCode();
 }
 
 class KodeProvinsiValidator implements KIPValidator{
     private String kodeProvinsi;
 
-    public KodeProvinsiValidator(String kodeProvinsi) {
-        this.kodeProvinsi = kodeProvinsi;
+    public KodeProvinsiValidator(String kodeProvinsi) throws KIPException{
+        this.kodeProvinsi = isValid(kodeProvinsi);
     }
 
     public String getKodeProvinsi() {
@@ -16,20 +17,24 @@ class KodeProvinsiValidator implements KIPValidator{
     }
 
     @Override
-    public KodeProvinsiValidator isValid() throws KIPException{
+    public String isValid(String kode) throws KIPException{
         if (!kodeProvinsi.equals("1")){
             throw new KIPException("Kode Provinsi Salah!");
         }
-        return this;
+        return kode;
     }
 
+    @Override
+    public String getCode() {
+        return kodeProvinsi;
+    }
 }
 
 class KodeKabupatenValidator implements KIPValidator{
     private String kodeKabupaten;
 
-    public KodeKabupatenValidator(String kodeKabupaten) {
-        this.kodeKabupaten = kodeKabupaten;
+    public KodeKabupatenValidator(String kodeKabupaten) throws KIPException{
+        this.kodeKabupaten = isValid(kodeKabupaten);
     }
 
     public String getKodeKabupaten() {
@@ -37,11 +42,15 @@ class KodeKabupatenValidator implements KIPValidator{
     }
 
     @Override
-    public KodeKabupatenValidator isValid() throws KIPException{
+    public String isValid(String kode) throws KIPException{
         if (!kodeKabupaten.equals("1")){
             throw new KIPException("Kode Provinsi Salah!");
         }
-        return this;
+        return kode;
+    }
+    @Override
+    public String getCode() {
+        return kodeKabupaten;
     }
 
 }
