@@ -2,7 +2,7 @@ package projek;
 
 public interface QuestionnaireValidator<R> {
     R getAttribute();
-    boolean isValid(String attributes) throws QuestionnaireException;
+    boolean isValid(String attributes) throws QuestionnaireException;  
 }
 
 class BooleanField implements QuestionnaireValidator<Boolean> {
@@ -24,8 +24,11 @@ class BooleanField implements QuestionnaireValidator<Boolean> {
         TODO confirmation
         Buat validasi klo yang dimasukkan itu 1 atau 0
          */
+        if (attributes == "1")
+            {return true;}
+        
         return false;
-    }
+    }  
 }
 
 /*

@@ -1,13 +1,17 @@
 
 package projek;
 
+import java.util.Scanner;
+
 public class QuestionnaireData {
     
     private QuestionnaireValidator<Boolean> confirmed;
-    private int kondisiPerusahaan=0;
+   
+    private KeteranganKuesioner keterangan;
+    private String kondisiPerusahaan;
     private boolean tanamanPangan=false;
     private boolean hortikultura=false;
-    private boolean perkebunan=false;
+    private String perkebunan;
     private boolean peternakan=false;
     private boolean kehutanan=false;
     private boolean perikanan=false;
@@ -20,60 +24,60 @@ public class QuestionnaireData {
         this.confirmed = new BooleanField(confirmed);
     }
 
-    public int getKondisiPerusahaan() {
-        return kondisiPerusahaan;
+    public String getKondisiPerusahaan() {    
+       return kondisiPerusahaan;
     }
 
-    public void setKondisiPerusahaan(int kondisiPerusahaan) {
-        this.kondisiPerusahaan = kondisiPerusahaan;
+    public void setKondisiPerusahaan(int kondisiPerusahaan1) {
+        this.kondisiPerusahaan = keterangan.Kondisi_Perusahaan(kondisiPerusahaan1);
     }
 
     public boolean isTanamanPangan() {
         return tanamanPangan;
     }
 
-    public void setTanamanPangan(boolean tanamanPangan) {
-        this.tanamanPangan = tanamanPangan;
+    public void setTanamanPangan(int tanamanPangan1) {
+        this.tanamanPangan = keterangan.SubsektorTanamanPangan(tanamanPangan1);
     }
 
     public boolean isHortikultura() {
         return hortikultura;
     }
 
-    public void setHortikultura(boolean hortikultura) {
-        this.hortikultura = hortikultura;
+    public void setHortikultura(int hortikultura1) {
+        this.hortikultura = keterangan.SubsektorHortikultura(hortikultura1);
     }
 
-    public boolean isPerkebunan() {
+    public String getPerkebunan() {
         return perkebunan;
     }
 
-    public void setPerkebunan(boolean perkebunan) {
-        this.perkebunan = perkebunan;
+    public void setPerkebunan(String perkebunan1) {
+        this.perkebunan = keterangan.SubsektorPerkebunan(perkebunan1);
     }
 
     public boolean isPeternakan() {
         return peternakan;
     }
 
-    public void setPeternakan(boolean peternakan) {
-        this.peternakan = peternakan;
+    public void setPeternakan(int peternakan1) {
+        this.peternakan = keterangan.SubsektorPeternakan(peternakan1);
     }
 
     public boolean isKehutanan() {
         return kehutanan;
     }
 
-    public void setKehutanan(boolean kehutanan) {
-        this.kehutanan = kehutanan;
+    public void setKehutanan(int kehutanan1) {
+        this.kehutanan = keterangan.SubsektorKehutanan(kehutanan1);
     }
 
     public boolean isPerikanan() {
         return perikanan;
     }
 
-    public void setPerikanan(boolean perikanan) {
-        this.perikanan = perikanan;
+    public void setPerikanan(int perikanan1) {
+        this.perikanan = keterangan.SubsektorPerikanan(perikanan1);
     }
 
 }
@@ -81,3 +85,4 @@ public class QuestionnaireData {
 /*
 TODO sesuaikan lagi get dan set nya
  */
+
