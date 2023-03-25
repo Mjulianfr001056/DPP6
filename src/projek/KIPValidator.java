@@ -12,10 +12,6 @@ class KodeProvinsiValidator implements KIPValidator{
         this.kodeProvinsi = isValid(kode);
     }
 
-    public String getKodeProvinsi() {
-        return kodeProvinsi;
-    }
-
     /*
     * Validasi : 
     * Kode Provinsi diawali 1,2,3,5,6,7,8.9
@@ -45,10 +41,6 @@ class KodeKabupatenValidator implements KIPValidator{
         this.kodeKabupaten = isValid(kode);
     }
 
-    public String getKodeKabupaten() {
-        return kodeKabupaten;
-    }
-    
     /*
     * Validasi : 
     * Kode Kab/Kota diawali 0,7
