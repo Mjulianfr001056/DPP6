@@ -5,16 +5,16 @@ import java.util.Scanner;
 
 public class QuestionnaireData {
     
-    private QuestionnaireValidator<Boolean> confirmed;
+    private QuestionnaireValidator<Boolean> confirmed;  // kolom12
    
     private KeteranganKuesioner keterangan;
-    private String kondisiPerusahaan;
-    private boolean tanamanPangan=false;
-    private boolean hortikultura=false;
-    private String perkebunan;
-    private boolean peternakan=false;
-    private boolean kehutanan=false;
-    private boolean perikanan=false;
+    private String kondisiPerusahaan;      // kolom 13
+    private boolean tanamanPangan=false;   // kolom 14
+    private boolean hortikultura=false;    // kolom 15
+    private String perkebunan;             // kolom 16
+    private boolean peternakan=false;      // kolom 17
+    private boolean kehutanan=false;       // kolom 18
+    private boolean perikanan=false;       // kolom 19
 
     public boolean getConfirmed() {
         return confirmed.getAttribute().booleanValue();
