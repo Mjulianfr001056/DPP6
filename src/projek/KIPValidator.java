@@ -68,10 +68,6 @@ class KodeKecamatanValidator implements KIPValidator{
         this.kodeKecamatan = isValid(kode);
     }
 
-    public String getKodeKecamatan() {
-        return kodeKecamatan;
-    }
-
     /*
     * Validasi : 
     * Jumlah kec terbanyak di 1 kab/kota +-50-an
@@ -98,15 +94,15 @@ class KodeKJUValidator implements KIPValidator{
         this.kodeKJU = isValid(kode);
     }
 
-    public String getKodeKJU() {
-        return kodeKJU;
-    }
 
     /*
     * Validasi : 
     * Jumlah kec terbanyak di 1 kab/kota +-50-an
     * Kode Kecamatan panjangnya 2
-    */    
+    *
+    * TODO
+    *   Ganti Keterangan validasinya
+    */
     @Override
     public String isValid(String kode) throws KIPException{
         if (!(kode.matches("0[1-7]*")&& kode.length() == 2)){
@@ -128,18 +124,14 @@ class NoUrutValidator implements KIPValidator{
         this.noUrut = isValid(noUrut);
     }
 
-    public String getNoUrut() {
-        return noUrut;
-    }
-
     /*
     * Validasi : 
     * No urut tidak boleh berupa huruf
     */    
     @Override
     public String isValid(String kode) throws KIPException{
-        //TIDAK PERLU ADA VALIDASI
-        return kode;
+        if(kode.matches("\\d+")) return kode;
+        else throw new KIPException("Salah");
     }
     @Override
     public String getCode() {
@@ -147,12 +139,3 @@ class NoUrutValidator implements KIPValidator{
     }
 
 }
-
-/*
-TODO
-1. Buat class yang implements si KIPValidator disini
-2. Atribut yang dipakai sama
-3. Constructor juga sama
-4. Getter nya juga sama
-5. Yang beda cuma di @Override isValid() nya, sesuaikan dengan validasi yang kemarenn
- */

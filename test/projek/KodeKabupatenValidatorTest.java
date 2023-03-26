@@ -92,6 +92,15 @@ class KodeKabupatenValidatorTest {
     }
 
     @Test
+    void MoreThanTwoDigitsShouldFailTest(){
+        try{
+            assertThrows(KIPException.class, () -> new KodeKabupatenValidator("0123"));
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+        }
+    }
+
+    @Test
     void SpecialCharacterShouldFailTest(){
 
         String testString = "!@#$%^&*()_+{<>?-=[];',\\\"./? ";

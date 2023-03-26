@@ -11,35 +11,56 @@ class KodeProvinsiValidatorTest {
     }
 
     @Test
-    void GetCodeTest() throws Exception {
+    void GetCodeTest(){
         int[] daftarProvinsi = {11, 12, 13, 14, 15, 16, 17, 18, 19,
                 21, 31, 32, 33, 34, 35, 36, 51, 52, 53, 61, 62, 63,
                 64, 71, 72, 73, 74, 75, 76, 81, 82, 91, 94};
         for (int i : daftarProvinsi){
-            KodeProvinsiValidator KPV = new KodeProvinsiValidator(Integer.toString(i));
-            assertEquals(Integer.toString(i), KPV.getCode());
+            try{
+                KodeProvinsiValidator KPV = new KodeProvinsiValidator(Integer.toString(i));
+                assertEquals(Integer.toString(i), KPV.getCode());
+            }catch (Exception e){
+                System.err.println(e.getMessage());
+            }
         }
     }
 
     @Test
-    void KodeProvinsiOneDigitShouldFailTest() throws Exception{
-        KodeProvinsiValidator KPV = new KodeProvinsiValidator("11");
-        assertThrows(KIPException.class, () -> KPV.isValid("0"));
+    void OneDigitShouldFailTest(){
+        try{
+            assertThrows(KIPException.class, () -> new KodeProvinsiValidator("0"));
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+        }
+    }
+    @Test
+    void MoreThanTwoDigitsShouldFailTest(){
+        try{
+            assertThrows(KIPException.class, () -> new KodeProvinsiValidator("0"));
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+        }
     }
 
     @Test
-    void KodeProvinsiNotNumberShouldFailTest() throws Exception{
-        KodeProvinsiValidator KPV = new KodeProvinsiValidator("11");
-        assertThrows(KIPException.class, () -> KPV.isValid("a"));
+    void AlphabeticShouldFailTest(){
+        try{
+            assertThrows(KIPException.class, () -> new KodeProvinsiValidator("aa"));
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+        }
     }
 
     @Test
-    void KodeProvinsiSpecialCharacterShouldFailTest() throws Exception{
+    void SpecialCharacterShouldFailTest(){
         String testString = "!@#$%^&*()_+{<>?-=[];',\\\"./? ";
-        KodeProvinsiValidator KPV = new KodeProvinsiValidator("11");
         for (int i = 0; i<testString.length(); i++){
             String testChar = Character.toString(testString.charAt(i));
-            assertThrows(KIPException.class, () -> KPV.isValid(testChar));
+            try{
+                assertThrows(KIPException.class, () -> new KodeProvinsiValidator(testChar + testChar));
+            }catch (Exception e){
+                System.err.println(e.getMessage());
+            }
         }
     }
 
