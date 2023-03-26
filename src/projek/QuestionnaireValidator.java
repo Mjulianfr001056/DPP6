@@ -24,10 +24,14 @@ class BooleanField implements QuestionnaireValidator<Boolean> {
         TODO confirmation
         Buat validasi klo yang dimasukkan itu 1 atau 0
          */
+       
         if (attributes == "1")
-            {return true;}
-        
-        return false;
+           return true;
+         else if (attributes == "0")
+            return false;
+        else 
+            throw new QuestionnaireException("Inputan Anda salah");
+              
     }  
 }
 
