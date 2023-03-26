@@ -12,9 +12,9 @@ public class KIP {
     //properties
     private KIPValidator kodeProvinsi;
     private KIPValidator kodeKabupaten;
-    private String kodeKecamatan;
-    private String kodeKJU;
-    private String noUrutKabupatenKota;
+    private KIPValidator kodeKecamatan;
+    private KIPValidator kodeKJU;
+    private static KIPValidator noUrutKabupatenKota;
     /*
     TODO Ubah Attribut
     Ubah atribut pakai Interface KIP Validator semua
@@ -25,12 +25,14 @@ public class KIP {
     public KIP() {
     }
 
-    public KIP(String kodeProvinsi, String kodeKabupaten, String kodeKecamatan, String kodeKJU, String noUrutKabupatenKota) throws KIPException{
+    public KIP(String kodeProvinsi, String kodeKabupaten, String kodeKecamatan, String kodeKJU) throws KIPException{
         this.kodeProvinsi = new KodeProvinsiValidator(kodeProvinsi);
         this.kodeKabupaten = new KodeKabupatenValidator(kodeKabupaten);
-        this.kodeKecamatan = kodeKecamatan;
-        this.kodeKJU = kodeKJU;
-        this.noUrutKabupatenKota = noUrutKabupatenKota;
+        this.kodeKecamatan = new KodeKecamatanValidator(kodeKecamatan);
+        this.kodeKJU = new KodeKJUValidator(kodeKJU);
+
+        KIP.noUrutKabupatenKota = KIP.noUrutKabupatenKota == null ? new NoUrutValidator("1") :
+                new NoUrutValidator(String.valueOf(Integer.parseInt(noUrutKabupatenKota.getCode())+1));
 
         /*
         TODO Ubah constructor
@@ -39,66 +41,67 @@ public class KIP {
          */
     }
 
-    //method
-//    public String getKodeProvinsi(){
-//        return this.kodeProvinsi;
-//    }
-//
-//    public void setKodeProvinsi(String kode){
-//        this.kodeProvinsi = kode;
-//    }
-//
-//    public String getKodeKabupaten(){
-//        return this.kodeKabupaten;
-//    }
-//
-//    public void setKodeKabupaten(String kode){
-//        this.kodeKabupaten = kode;
-//    }
-//
-//        public String getKodeKecamatan(){
-//        return this.kodeKecamatan;
-//    }
-//
-//    public void setKodeKecamatan(String kode){
-//        this.kodeKecamatan = kode;
-//    }
-//
-//        public String getKodeKJU(){
-//        return this.kodeKJU;
-//    }
-//
-//    public void setKodeKJU(String kode){
-//        this.kodeKJU = kode;
-//    }
-
+    public String getKodeProvinsi() {
+        return kodeProvinsi.getCode();
+    }
 
     public String getKodeKabupaten() {
-        return this.kodeKabupaten.getCode();
+        return kodeKabupaten.getCode();
+    }
+
+    public String getKodeKecamatan() {
+        return kodeKecamatan.getCode();
+    }
+
+    public String getKodeKJU() {
+        return kodeKJU.getCode();
+    }
+
+    public static String getNoUrutKabupatenKota() {
+        return noUrutKabupatenKota.getCode();
+    }
+
+    public void setKodeProvinsi(String kodeProvinsi) {
+        try {
+            this.kodeProvinsi = new KodeProvinsiValidator(kodeProvinsi);
+        }catch (KIPException e){
+            System.out.println("Gagal melakukan penyuntingan kode provinsi");
+        }
+    }
+
+    public void setKodeKabupaten(String kodeKabupaten) {
+        try {
+            this.kodeKabupaten = new KodeKabupatenValidator(kodeKabupaten);
+        }catch (KIPException e){
+            System.out.println("Gagal melakukan penyuntingan kode kabupaten");
+        }
+
+    }
+
+    public void setKodeKecamatan(String kodeKecamatan) {
+        try {
+            this.kodeKecamatan = new KodeKecamatanValidator(kodeKecamatan);
+        }catch (KIPException e){
+            System.out.println("Gagal melakukan penyuntingan kode kecamatan");
+        }
+
+    }
+
+    public void setKodeKJU(String kodeKJU) {
+        try {
+            this.kodeKJU = new KodeKJUValidator(kodeKJU);
+        }catch (KIPException e){
+            System.out.println("Gagal melakukan penyuntingan kode KJU");
+        }
+
     }
 
     @Override
     public String toString(){
-        return "Kode Provinsi : "+this.kodeProvinsi +", Kode Kabupaten : 0"+this.kodeKabupaten +", Kode Kecamatan : "+this.kodeKecamatan +", Kode KJU : "+this.kodeKJU+", No. Urut : "+this.noUrutKabupatenKota;
+        return "Kode Provinsi : " + getKodeProvinsi() +
+                ", Kode Kabupaten : " + getKodeKabupaten() +
+                ", Kode Kecamatan : " + getKodeKecamatan() +
+                ", Kode KJU : " + getKodeKJU() +
+                ", No. Urut : " + KIP.noUrutKabupatenKota.getCode();
     }
-
-    public static void main(String[] args) {
-        //Testing code goes here
-        KIP kip = new KIP();
-        try{
-            kip = new KIP("02", "1", "0", "0", "0");
-
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-
-        /*
-        TODO Testdrive
-        misal udh semua dibuat, coba masukin KIP yang pake kasus riil, klo berhasil bisa pull request yak
-         */
-
-        //System.out.println(kip.getKodeKabupaten());
-
-    }
-    
 }
