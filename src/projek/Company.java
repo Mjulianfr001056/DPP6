@@ -35,18 +35,16 @@ public class Company {
     public void setNomorFax(String nomorFax) throws InvalidNumberException{
         this.nomorFax = new NomorFaksimile(nomorFax);
     }
-
-    //    public void setAlamat(String alamat){
-//        this.alamat = alamat;
-//    }
-//    public void setBentukBadanHukum(String bentukBadanHukum){
-//        this.bentukBadanHukum = bentukBadanHukum;
-//    }
-
-    /*
-    TODO Implementasi set
-    1. Buat setter dari alamat dan bentuk badan hukum
-    2. Template nya mirip kek setNama()
-
-     */
+    
+    public void setNomorTelefon(String nomorTelefon) throws InvalidNumberException{
+        this.nomorTelefon = new NomorTelepon(nomorTelefon);
+    }
+    
+    public void setAlamat(String alamat) throws CompanyException{
+        this.alamat = new CompanyAddress(alamat);
+    }
+    
+   public void setBentukBadanHukum(String bentukBadanHukum) throws CompanyException{
+        this.bentukBadanHukum = new CompanyBentukBadanHukum(bentukBadanHukum);
+    }
 }

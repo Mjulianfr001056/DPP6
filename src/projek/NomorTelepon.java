@@ -9,17 +9,16 @@ package projek;
  * @author ACER
  */
 public class NomorTelepon extends NomorKontak{
-    public NomorTelepon() {
+    public NomorTelepon(String nomorKontak) throws InvalidNumberException{
+        super.nomorKontak = new TelephoneValidator(nomorKontak);
     }
-//    @Override
-//    public void cetakNomor() {
-//        System.out.println("(" + nomorKontak.substring(0, 3) + ")" + nomorKontak.substring(4, nomorKontak.length()) + ")");
-//    }
-
+    
     @Override
     public void cetakNomor() {
-
+        String nomorKontak = super.getNomorKontak();
+        System.out.println("(" + nomorKontak.substring(0, 3) + ")" + nomorKontak.substring(4, nomorKontak.length()) + ")");
     }
+
 }
 
 /*
