@@ -98,10 +98,10 @@ public class KIP {
 
     @Override
     public String toString(){
-        return "Kode Provinsi : " + getKodeKabupaten() +
+        return "Kode Provinsi : " + getKodeProvinsi() +
                 ", Kode Kabupaten : " + getKodeKabupaten() +
                 ", Kode Kecamatan : " + getKodeKecamatan() +
                 ", Kode KJU : " + getKodeKJU() +
-                ", No. Urut : " + KIP.noUrutKabupatenKota;
+                ", No. Urut : " + KIP.noUrutKabupatenKota.getCode();
     }
 }

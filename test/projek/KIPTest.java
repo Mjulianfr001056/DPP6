@@ -8,7 +8,7 @@ class KIPTest {
     @Test
     void NoUrutShouldIncrease(){
         try{
-            assertEquals("2", KIP.getNoUrutKabupatenKota());
+            assertEquals("4", KIP.getNoUrutKabupatenKota());
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -47,6 +47,45 @@ class KIPTest {
             System.out.println(e.getMessage());
         }
     }
+
+    @Test
+    void GetCodeTest(){
+        try{
+            KIP testKIP = new KIP("13", "72", "010", "01");
+            assertEquals("13", testKIP.getKodeProvinsi());
+            assertEquals("72", testKIP.getKodeKabupaten());
+            assertEquals("010", testKIP.getKodeKecamatan());
+            assertEquals("01", testKIP.getKodeKJU());
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    void SetCodeTest(){
+        try{
+            KIP testKIP = new KIP();
+            assertDoesNotThrow(() -> testKIP.setKodeProvinsi("13"));
+            assertDoesNotThrow(() -> testKIP.setKodeKabupaten("72"));
+            assertDoesNotThrow(() -> testKIP.setKodeKecamatan("010"));
+            assertDoesNotThrow(() -> testKIP.setKodeKJU("01"));
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    void ToStringTest(){
+        try{
+            KIP testKIP = new KIP("13", "72", "010", "01");
+            assertEquals("Kode Provinsi : 13, Kode Kabupaten : 72," +
+                            " Kode Kecamatan : 010, Kode KJU : 01, No. Urut : 4",
+                    testKIP.toString());
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
     @Test
     void KodeProvinsiShouldFailTest(){
         try{
