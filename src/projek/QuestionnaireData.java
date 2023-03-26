@@ -29,7 +29,7 @@ public class QuestionnaireData {
     }
 
     public void setKondisiPerusahaan(int kondisiPerusahaan1) {
-        this.kondisiPerusahaan = keterangan.Kondisi_Perusahaan(kondisiPerusahaan1);
+        this.kondisiPerusahaan = keterangan.kondisiPerusahaan(kondisiPerusahaan1);
     }
 
     public boolean isTanamanPangan() {
@@ -53,7 +53,7 @@ public class QuestionnaireData {
     }
 
     public void setPerkebunan(String perkebunan1) {
-        this.perkebunan = keterangan.SubsektorPerkebunan(perkebunan1);
+        this.perkebunan = keterangan.subsektorPerkebunan(perkebunan1);
     }
 
     public boolean isPeternakan() {
