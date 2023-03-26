@@ -1,24 +1,22 @@
 package projek;
 
+import static java.lang.System.in;
 import java.util.Scanner;
 
 public class Main {
-    static void tampilMenu() {
-       boolean quit = false;
-       do {
+    public static void tampilMenu() {
+    Scanner in = new Scanner(System.in);
+    
         System.out.println("Silakan Pilih Menu yang Tersedia!");
         System.out.println("Pilihan Menu yang Tersedia:");
         System.out.println("1. Entri Data"); 
         System.out.println("2. Lihat Data");
         System.out.println("-------------");
         
-        Scanner in = new Scanner(System.in);
-        System.out.println("Pilih Menu Kuesioner: ");
-        String menu = in.nextLine();
+        int menu = in.nextInt();
         
-        switch(menu) { 
-            //Menu Nomor 1 (Entri Data) -> KIP, Perusahaan, Hasil
-            case "1" -> {
+        switch(menu) { //Menu Nomor 1 (Entri Data) -> KIP, Perusahaan, Hasil
+            case 1:
                System.out.println("\nSilakan Pilih Data yang Ingin Diinput: ");
                System.out.println("1. Keterangan Kuesioner");           //bagian atas kues
                System.out.println("2. Kode Identitas Perusahaan (KIP)");//kolom 1-6
@@ -26,21 +24,24 @@ public class Main {
                System.out.println("4. Keterangan Pencacahan");          //kolom 12-13
                System.out.println("5. Keterangan Subsektor\n");         //kolom 14-20
                
-               Scanner in1 = new Scanner(System.in);
-               System.out.println("Pilih Menu Entri Data: ");
-               String entridata = in.nextLine();  
+               int entriData = in.nextInt();
                
-               switch(entridata){ //belum dikasih do jadi belum bisa jalan, variabel belum disesuaikan
-                   case "1" -> {
-                       System.out.println("Provinsi: ");
+               switch(entriData){ 
+                   case 1:
+                       try{ 
+                           System.out.println("Provinsi: ");
                        String provinsi = in.nextLine();
                        System.out.println("Kabupaten/Kota: ");
                        String kabkota = in.nextLine();
                        System.out.println("Periode Data: ");
                        String periodedata = in.nextLine();
-                   }
-                   case "2" -> {
-                       System.out.println("Nomor Urut Entri Perusahaan: ");
+                       } catch (Exception e) {
+                         System.out.println("");
+                       }
+               
+                   case 2:
+                       try{
+                           System.out.println("Nomor Urut Entri Perusahaan: ");
                        String no = in.nextLine();
                        System.out.println("Kode Provinsi: ");
                        String kodeprov = in.nextLine();
@@ -52,9 +53,13 @@ public class Main {
                        String kodekju = in.nextLine();
                        System.out.println("Nomor Urut dalam Satu Kabupaten/Kota: ");
                        String nodlmkabkot = in.nextLine();
-                   }
-                   case "3" -> {
-                       System.out.println("Nama Perusahaan Pertanian: ");
+                       } catch (Exception e) {
+                         System.out.println("");
+                       }
+                       
+                   case 3: 
+                       try { 
+                           System.out.println("Nama Perusahaan Pertanian: ");
                        String namap = in.nextLine();
                        System.out.println("Alamat Perusahaan Pertanian: ");
                        String alamat = in.nextLine();
@@ -64,9 +69,13 @@ public class Main {
                        String faksimili = in.nextLine();
                        System.out.println("Bentuk Badan Hukum: ");
                        String badanhukum = in.nextLine();
-                   }
-                   case "4" -> {
-                       System.out.println("1. Sudah dikunjungi/mendapatkan informasi dari pihak lain (dinas, dll)\n"
+                       } catch (Exception e) {
+                         System.out.println("");
+                       }
+                   
+                   case 4:
+                       try {
+                           System.out.println("1. Sudah dikunjungi/mendapatkan informasi dari pihak lain (dinas, dll)\n"
                                + "         2. Belum dikonfirmasi keberadaannya");
                        System.out.println("Pilih Keterangan: ");
                        String keterangan = in.nextLine();
@@ -81,9 +90,13 @@ public class Main {
                                + "9. Ganda");
                        System.out.println("Pilih Keterangan Tambahan: ");
                        String keterangantambahan = in.nextLine();
-                   }
-                   case "5" -> {
-                       System.out.println("0. Tidak Ada"
+                       } catch (Exception e) {
+                         System.out.println("");
+                       }
+                   
+                   case 5:
+                       try{
+                           System.out.println("0. Tidak Ada"
                                + "1. Ada");
                        System.out.println("Tanaman Pangan: ");
                        String tanamanpangan = in.nextLine();
@@ -135,25 +148,22 @@ public class Main {
                                + "6. Peternakan");
                        System.out.println("Jenis Usaha Utama: ");
                        String jenisusahautama = in.nextLine();
-                   }
-               }  
-            }
-            
-            //Menu Nomor 2 (Lihat Data)
-            case "2" -> {
-                System.out.println("Data");
-                //isi pake for bisa deh keknya
-            }
+                       } catch (Exception e) {
+                         System.out.println("");
+                       }
+                }
+            break;
+
+            case 2:
+            System.out.println("Tampilkan Data yang Telah Di Entri");
             
        //program berhenti
-       default -> {
+       break;
+            default:
        System.out.println("Input Salah, Program Dihentikan!");
-       quit = true;
+            break;
        }
-       }
-       }
-        while(!quit);
-       }
+    }
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -170,7 +180,7 @@ public class Main {
 
 /*
 TODO
-1. Buat setiap data dimasukkan 1 1 trus kalo gagal diulang lgi di field itu lagi (belum)
-2. Pakai try-catch aja cukup keknya (belum, perlu do juga)
-3. Semua input pakai String (sudah)
+1. Buat setiap data dimasukkan 1 1 trus kalo gagal diulang lgi di field itu lagi 
+2. Pakai try-catch aja cukup keknya 
+3. Semua input pakai String 
  */
