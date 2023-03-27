@@ -28,23 +28,44 @@ public class Company {
         return bentukBadanHukum.getAttribute();
     }
     
-    public void setNama(String nama) throws CompanyException{
-        this.nama = new CompanyName(nama);
+    public void setNama(String nama){
+        try{
+            this.nama = new CompanyName(nama);
+        } catch(CompanyException e){
+            System.out.println("Gagal Menginput Nama Perusahaan");
+        }
     }
 
-    public void setNomorFax(String nomorFax) throws InvalidNumberException{
-        this.nomorFax = new NomorFaksimile(nomorFax);
+    public void setAlamat(String alamat){
+        try{
+            this.alamat = new CompanyAddress(alamat);
+        } catch(CompanyException e){
+            System.out.println("Gagal Menginput Alamat Perusahaan");
+        }    
     }
     
-    public void setNomorTelefon(String nomorTelefon) throws InvalidNumberException{
-        this.nomorTelefon = new NomorTelepon(nomorTelefon);
+   public void setBentukBadanHukum(String bentukBadanHukum){
+       try{
+           this.bentukBadanHukum = new CompanyBentukBadanHukum(bentukBadanHukum);
+       } catch(CompanyException e){
+            System.out.println("Gagal Menginput Alamat Perusahaan");
+        }       
+    }
+   
+    public void setNomorFax(String nomorFax){
+        try{
+            this.nomorFax = new NomorFaksimile(nomorFax);
+        } catch(InvalidNumberException e){
+            System.out.println("Gagal Menginput Nomor Faksimili");
+        }  
     }
     
-    public void setAlamat(String alamat) throws CompanyException{
-        this.alamat = new CompanyAddress(alamat);
+    public void setNomorTelefon(String nomorTelefon){
+        try{
+            this.nomorTelefon = new NomorTelepon(nomorTelefon);
+        }catch(InvalidNumberException e){
+            System.out.println("Gagal Menginput Nomor Telepon");
+        }      
     }
     
-   public void setBentukBadanHukum(String bentukBadanHukum) throws CompanyException{
-        this.bentukBadanHukum = new CompanyBentukBadanHukum(bentukBadanHukum);
-    }
 }
