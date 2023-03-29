@@ -9,19 +9,20 @@ package projek;
  * @author ACER
  */
 public class NomorTelepon extends NomorKontak{
-    public NomorTelepon(String nomorKontak) throws InvalidNumberException{
-        super.nomorKontak = new TelephoneValidator(nomorKontak);
+    public NomorTelepon(String nomorKontak){
+        try{
+            super.nomorKontak = new TelephoneValidator(nomorKontak);
+        }catch (InvalidNumberException e){
+            System.out.println(e.getMessage());
+        }
     }
     
     @Override
     public void cetakNomor() {
         String nomorKontak = super.getNomorKontak();
-        System.out.println("(" + nomorKontak.substring(0, 3) + ")" + nomorKontak.substring(4, nomorKontak.length()) + ")");
+        System.out.println("(" + nomorKontak.substring(0, 3) + ")" +
+                nomorKontak.substring(4, nomorKontak.length()) + ")");
     }
 
 }
 
-/*
-    TODO Implementasi NomorTelepon
-    Ini tinggal nyamakan dengan yang di Nomor Faksimile
- */

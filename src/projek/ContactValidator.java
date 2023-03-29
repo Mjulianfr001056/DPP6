@@ -40,7 +40,7 @@ class TelephoneValidator implements ContactValidator{
     @Override
     public String isValid(String nomor) throws InvalidNumberException{
         if(nomor.length() >15 || nomor.length() <8 || !nomor.matches("0\\d+")){
-            throw new InvalidNumberException("Nomor Fax salah");
+            throw new InvalidNumberException("Nomor Telefon salah");
         }else return nomor;
     }
 }

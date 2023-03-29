@@ -12,12 +12,12 @@ public class Company {
     private CompanyValidator nama;
     private CompanyValidator alamat;
     private CompanyValidator bentukBadanHukum;
-
-    //Tambahan di company bisa punya nomor kontak yekan
     private NomorKontak nomorFax;
     private NomorKontak nomorTelefon;
 
-    
+    public Company() {
+    }
+
     public String getNama(){
         return nama.getAttribute();
     }
@@ -27,45 +27,32 @@ public class Company {
     public String getBentukBadanHukum(){
         return bentukBadanHukum.getAttribute();
     }
-    
+
+    public String getNomorFax() {
+        return nomorFax.getNomorKontak();
+    }
+    public String getNomorTelefon() {
+        return nomorTelefon.getNomorKontak();
+    }
+
     public void setNama(String nama){
-        try{
-            this.nama = new CompanyName(nama);
-        } catch(CompanyException e){
-            System.out.println("Gagal Menginput Nama Perusahaan");
-        }
+        this.nama = new CompanyName(nama);
     }
 
     public void setAlamat(String alamat){
-        try{
-            this.alamat = new CompanyAddress(alamat);
-        } catch(CompanyException e){
-            System.out.println("Gagal Menginput Alamat Perusahaan");
-        }    
+        this.alamat = new CompanyAddress(alamat);
     }
     
    public void setBentukBadanHukum(String bentukBadanHukum){
-       try{
-           this.bentukBadanHukum = new CompanyBentukBadanHukum(bentukBadanHukum);
-       } catch(CompanyException e){
-            System.out.println("Gagal Menginput Alamat Perusahaan");
-        }       
+       this.bentukBadanHukum = new CompanyBentukBadanHukum(bentukBadanHukum);
     }
    
     public void setNomorFax(String nomorFax){
-        try{
-            this.nomorFax = new NomorFaksimile(nomorFax);
-        } catch(InvalidNumberException e){
-            System.out.println("Gagal Menginput Nomor Faksimili");
-        }  
+        this.nomorFax = new NomorFaksimile(nomorFax);
     }
     
     public void setNomorTelefon(String nomorTelefon){
-        try{
-            this.nomorTelefon = new NomorTelepon(nomorTelefon);
-        }catch(InvalidNumberException e){
-            System.out.println("Gagal Menginput Nomor Telepon");
-        }      
+        this.nomorTelefon = new NomorTelepon(nomorTelefon);
     }
     
 }

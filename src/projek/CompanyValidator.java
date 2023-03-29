@@ -1,4 +1,5 @@
 package projek;
+import projek.CompanyException;
 
 public interface CompanyValidator {
     String getAttribute();
@@ -8,8 +9,12 @@ public interface CompanyValidator {
 class CompanyName implements CompanyValidator{
     String attribute;
 
-    public CompanyName(String attribute) throws CompanyException {
-        this.attribute = isValid(attribute);
+    public CompanyName(String attribute) {
+        try{
+            this.attribute = isValid(attribute);
+        }catch (CompanyException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
@@ -19,7 +24,7 @@ class CompanyName implements CompanyValidator{
 
     @Override
     public String isValid(String attribute) throws CompanyException {
-        if(attribute.length() < 3 || attribute.length() > 30 || !attribute.matches("[& |a-z|A-Z]")){
+        if(attribute.length() < 3 || attribute.length() > 30 || !attribute.matches("[&a-zA-Z]+")){
             throw new CompanyException("Nama Perusahaan tidak sesuai");
         }
         return attribute;
@@ -29,8 +34,12 @@ class CompanyName implements CompanyValidator{
 class CompanyAddress implements CompanyValidator{
     String attribute;
         
-    public CompanyAddress(String attribute) throws CompanyException {
-    this.attribute = isValid(attribute);
+    public CompanyAddress(String attribute){
+        try{
+            this.attribute = isValid(attribute);
+        }catch (CompanyException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
@@ -40,7 +49,7 @@ class CompanyAddress implements CompanyValidator{
 
    @Override
     public String isValid(String attribute) throws CompanyException {
-        if(attribute.length() <20  || attribute.length() > 250 || !attribute.matches("[a-z|A-Z]")){
+        if(attribute.length() <20  || attribute.length() > 250 || !attribute.matches("[a-zA-Z]")){
             throw new CompanyException("Alamat Perusahaan tidak sesuai");
         }
         return attribute;
@@ -51,8 +60,12 @@ class CompanyAddress implements CompanyValidator{
 class CompanyBentukBadanHukum implements CompanyValidator{
     String attribute;
       
-    public CompanyBentukBadanHukum(String attribute) throws CompanyException {
-    this.attribute = isValid(attribute);
+    public CompanyBentukBadanHukum(String attribute){
+        try{
+            this.attribute = isValid(attribute);
+        }catch (CompanyException e){
+            System.out.println(e.getMessage());
+        }
     }
     
     @Override
@@ -62,8 +75,8 @@ class CompanyBentukBadanHukum implements CompanyValidator{
 
     @Override
     public String isValid(String attribute) throws CompanyException {
-        if(attribute.length() < 1 || attribute.length() > 2 || !attribute.matches("[0-9]")){
-            throw new CompanyException("Bentuk Badan Hukum tidak sesuai");
+        if(!attribute.matches("[0-9][0-9]")){
+            throw new CompanyException("Bentuk Badan Hukum tidak sesuai!");
         }
         return attribute;
     }
