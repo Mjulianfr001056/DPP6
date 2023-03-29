@@ -121,7 +121,7 @@ public class Main {
                             System.out.println("0. Tidak Ada"
                                     + "1. HPH/IUPHHK-HA"
                                     + "2. HPHT/IUPHHK-HT/Perhutani/Kehutanan lainnya"
-                                    + "3. Penangkaran STL\");
+                                    + "3. Penangkaran STL");
                             System.out.println("Kehutanan: ");
                             in.nextLine();
                         do {
