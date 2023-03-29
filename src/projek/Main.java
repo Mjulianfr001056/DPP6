@@ -23,28 +23,28 @@ public class Main {
                     try { 
                         do {
                             System.out.println("Kode Provinsi: ");
-                            in.nextLine();
+                            in.next();
                         do {
                             System.out.println("Kode Kabupaten/Kota: ");
-                            in.nextLine();
+                            in.next();
                         do {
                             System.out.println("Periode Data: ");
                             in.nextLine();
                         do {
                             System.out.println("Nomor Urut Entri Data Perusahaan: ");
-                            in.nextLine();
+                            in.next();
                         do {
                             System.out.println("Kode Provinsi: ");
-                            in.nextLine();
+                            in.next();
                         do {
                             System.out.println("Kode Kabupaten/Kota: ");
-                            in.nextLine();
+                            in.next();
                         do {
                             System.out.println("Kode Kecamatan: ");
-                            in.nextLine();
+                            in.next();
                         do {
                             System.out.println("Kode KJU: ");
-                            in.nextLine();
+                            in.next();
                         do {
                             System.out.println("Nomor Urut dalam Satu Kabupaten/Kota: ");
                             in.nextLine();
@@ -55,99 +55,93 @@ public class Main {
                             System.out.println("Alamat Perusahaan Pertanian: ");
                             in.nextLine();
                         do {
-                            System.out.println("NNomor Telepon: ");
-                            in.nextLine();
+                            System.out.println("Nomor Telepon: ");
+                            in.next();
                         do {
                             System.out.println("Nomor Faksimili: ");
-                            in.nextLine();
+                            in.next();
                         do {
                             System.out.println("Bentuk Badan Hukum: ");
                             in.nextLine();
                         do {
-                            System.out.println("1. Sudah dikunjungi/mendapatkan informasi dari pihak lain (dinas, dll)"
-                                    + " 2. Belum dikonfirmasi keberadaannya");
-                            System.out.println("Pilih Keterangan Terkait Perusahaan: ");
-                            in.nextLine();
-                        do {
-                            System.out.println("1. Sudah dikunjungi/mendapatkan informasi dari pihak lain (dinas, dll)"
+                            System.out.println("1. Sudah dikunjungi/mendapatkan informasi dari pihak lain (dinas, dll)\n"
                                     + "2. Belum dikonfirmasi keberadaannya");
                             System.out.println("Pilih Keterangan Terkait Perusahaan: ");
-                            in.nextLine();
+                            in.next();
                         do {
-                            System.out.println("1. Aktif"
-                                    + "2. Tutup Sementara/Tidak Ada Kegiatan"
-                                    + "3. Belum Berproduksi"
-                                    + "4. Tidak Bersedia Diwawancarai"
-                                    + "5. Alih Usaha ke Non Pertanian"
-                                    + "6. Tutup"
-                                    + "7. Tidak Ditemukan"
-                                    + "8. Baru"
+                            System.out.println("1. Aktif\n"
+                                    + "2. Tutup Sementara/Tidak Ada Kegiatan\n"
+                                    + "3. Belum Berproduksi\n"
+                                    + "4. Tidak Bersedia Diwawancarai\n"
+                                    + "5. Alih Usaha ke Non Pertanian\n"
+                                    + "6. Tutup\n"
+                                    + "7. Tidak Ditemukan\n"
+                                    + "8. Baru\n"
                                     + "9. Ganda");
                             System.out.println("Pilih Keterangan Terkait Perusahaan: ");
-                            in.nextLine();
+                            in.next();
                         do {
-                            System.out.println("0. Tidak Ada"
+                            System.out.println("0. Tidak Ada\n"
                                     + "1. Ada");
                             System.out.println("Tanaman Pangan: ");
-                            in.nextLine();
+                            in.next();
                         do {
-                            System.out.println("0. Tidak Ada"
+                            System.out.println("0. Tidak Ada\n"
                                     + "1. Ada");
                             System.out.println("Holtikultura: ");
-                            in.nextLine();
+                            in.next();
                         do {
-                            System.out.println("0. Tidak Ada"
-                                    + "3a. Kakao/Cokelat"
-                                    + "3b. Karet"
-                                    + "3c. Kelapa Sawit"
-                                    + "3d. Kopi"
-                                    + "3e. Teh"
-                                    + "3f. Tebu"
-                                    + "3g. Tembakau"
-                                    + "3h. Cengkeh"
-                                    + "3i. Kelapa"
-                                    + "3j. Lada"
+                            System.out.println("0. Tidak Ada\n"
+                                    + "3a. Kakao/Cokelat\n"
+                                    + "3b. Karet\n"
+                                    + "3c. Kelapa Sawit\n"
+                                    + "3d. Kopi\n"
+                                    + "3e. Teh\n"
+                                    + "3f. Tebu\n"
+                                    + "3g. Tembakau\n"
+                                    + "3h. Cengkeh\n"
+                                    + "3i. Kelapa\n"
+                                    + "3j. Lada\n"
                                     + "3k. Tanaman Lainnya");
                             System.out.println("Perkebunan: ");
-                            in.nextLine();
+                            in.next();
                         do {
-                            System.out.println("0. Tidak Ada"
-                                    + "1. Ternak Sapi Perah"
-                                    + "2. Ternak Besar/Kecil"
+                            System.out.println("0. Tidak Ada\n"
+                                    + "1. Ternak Sapi Perah\n"
+                                    + "2. Ternak Besar/Kecil\n"
                                     + "3. Unggas");
                             System.out.println("Peternakan: ");
-                            in.nextLine();
+                            in.next();
                         do {
-                            System.out.println("0. Tidak Ada"
-                                    + "1. HPH/IUPHHK-HA"
-                                    + "2. HPHT/IUPHHK-HT/Perhutani/Kehutanan lainnya"
+                            System.out.println("0. Tidak Ada\n"
+                                    + "1. HPH/IUPHHK-HA\n"
+                                    + "2. HPHT/IUPHHK-HT/Perhutani/Kehutanan lainnya\n"
                                     + "3. Penangkaran STL");
                             System.out.println("Kehutanan: ");
-                            in.nextLine();
+                            in.next();
                         do {
-                            System.out.println("0. Tidak Ada"
-                                    + "1. Budidaya Udang"
-                                    + "2. Budidaya Bandeng"
-                                    + "3. Budidaya Ikan Lainnya di Tambak"
-                                    + "4. Budidaya Ikan di Laut"
-                                    + "5. Budidaya Ikan di Air Tawar"
-                                    + "6. Budidaya Pembenihan"
+                            System.out.println("0. Tidak Ada\n"
+                                    + "1. Budidaya Udang\n"
+                                    + "2. Budidaya Bandeng\n"
+                                    + "3. Budidaya Ikan Lainnya di Tambak\n"
+                                    + "4. Budidaya Ikan di Laut\n"
+                                    + "5. Budidaya Ikan di Air Tawar\n"
+                                    + "6. Budidaya Pembenihan\n"
                                     + "7. Penangkapan Ikan");
                             System.out.println("Perikanan: ");
-                            in.nextLine();
+                            in.next();
                         do {
-                            System.out.println("1. Tanaman Pangan"
-                                    + "2. Holtikultura"
-                                    + "3. Perkebunan"
-                                    + "4. Kehutanan"
-                                    + "5. Perikanan"
+                            System.out.println("1. Tanaman Pangan\n"
+                                    + "2. Holtikultura\n"
+                                    + "3. Perkebunan\n"
+                                    + "4. Kehutanan\n"
+                                    + "5. Perikanan\n"
                                     + "6. Peternakan");
                             System.out.println("Jenis Usaha Utama: ");
-                            in.nextLine();
+                            in.next();
 
                         }while(true);
                         }while(true); // while nya dibawah langsung karena kalo ditaruh setelah do nya pas jadi error
-                        }while(true);
                         }while(true);
                         }while(true);
                         }while(true);
