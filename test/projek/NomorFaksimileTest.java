@@ -4,17 +4,17 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class NomorTeleponTest {
+class NomorFaksimileTest {
     @Test
     void ConstructorTest(){
-        assertDoesNotThrow(()-> new TelephoneValidator("051124283219"));
+        assertDoesNotThrow(()-> new FaximileValidator("0217832901"));
     }
 
     @Test
     void CetakNomorTest(){
         try{
-            NomorTelepon nt = new NomorTelepon("081299327412");
-            nt.cetakNomor();
+            NomorFaksimile nf = new NomorFaksimile("02173436714");
+            nf.cetakNomor();
         }catch (Exception e){
             System.err.println(e.getMessage());
         }

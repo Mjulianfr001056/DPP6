@@ -21,7 +21,7 @@ public class NomorFaksimile extends NomorKontak{
     @Override
     public void cetakNomor() {
         String nomorKontak = super.getNomorKontak();
-        System.out.println("(" + nomorKontak.substring(0, 2) + ")" +
-                nomorKontak.substring(3, nomorKontak.length()) + ")");
+        System.out.println("(" + nomorKontak.substring(0, 3) + ") " +
+                nomorKontak.substring(3));
     }
 }

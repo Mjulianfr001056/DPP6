@@ -9,9 +9,12 @@ package projek;
  * @author ACER
  */
 public class NomorTelepon extends NomorKontak{
-    public NomorTelepon(String nomorKontak){
+    public NomorTelepon() {
+    }
+
+    public NomorTelepon(String nomor){
         try{
-            super.nomorKontak = new TelephoneValidator(nomorKontak);
+            super.nomorKontak = new TelephoneValidator(nomor);
         }catch (InvalidNumberException e){
             System.out.println(e.getMessage());
         }
@@ -19,9 +22,9 @@ public class NomorTelepon extends NomorKontak{
     
     @Override
     public void cetakNomor() {
-        String nomorKontak = super.getNomorKontak();
-        System.out.println("(" + nomorKontak.substring(0, 3) + ")" +
-                nomorKontak.substring(4, nomorKontak.length()) + ")");
+        String nomor = super.getNomorKontak();
+        System.out.println("(" + nomor.substring(0, 4) + ") " +
+                nomor.substring(4));
     }
 
 }
