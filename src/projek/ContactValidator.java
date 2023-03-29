@@ -19,25 +19,28 @@ class FaximileValidator implements ContactValidator{
 
     @Override
     public String isValid(String nomor) throws InvalidNumberException{
-        if(nomor.equals("0")){
+        if(nomor.length() >15 || nomor.length() <8 || !nomor.matches("0\\d+")){
             throw new InvalidNumberException("Nomor Fax salah");
         }else return nomor;
     }
 }
 
 class TelephoneValidator implements ContactValidator{
-    /*
-    TODO Implement Validator
-    1. Buat validator Telephone buat ngecek nomor telefon
-    2. Kodenya mirip kek yang di Faximile
-     */
-    @Override
-    public String getNomor() {
-        return null;
+    String nomor;
+
+    public TelephoneValidator(String nomor) throws InvalidNumberException{
+        this.nomor = isValid(nomor);
     }
 
     @Override
-    public String isValid(String nomor) {
-        return null;
+    public String getNomor() {
+        return nomor;
+    }
+
+    @Override
+    public String isValid(String nomor) throws InvalidNumberException{
+        if(nomor.length() >15 || nomor.length() <8 || !nomor.matches("0\\d+")){
+            throw new InvalidNumberException("Nomor Telefon salah");
+        }else return nomor;
     }
 }

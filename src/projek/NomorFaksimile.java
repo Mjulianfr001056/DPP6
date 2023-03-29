@@ -9,13 +9,19 @@ package projek;
  * @author ACER
  */
 public class NomorFaksimile extends NomorKontak{
-    public NomorFaksimile(String nomorKontak) throws InvalidNumberException{
-        super.nomorKontak = new FaximileValidator(nomorKontak);
+    public NomorFaksimile(String nomorKontak){
+        try{
+            super.nomorKontak = new FaximileValidator(nomorKontak);
+        }catch (InvalidNumberException e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
     @Override
     public void cetakNomor() {
         String nomorKontak = super.getNomorKontak();
-       System.out.println("(" + nomorKontak.substring(0, 2) + ")" + nomorKontak.substring(3, nomorKontak.length()) + ")");
+        System.out.println("(" + nomorKontak.substring(0, 3) + ") " +
+                nomorKontak.substring(3));
     }
 }
