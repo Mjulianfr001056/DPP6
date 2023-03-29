@@ -2,11 +2,14 @@ package projek;
 
 public interface QuestionnaireValidator<R> {
     R getAttribute();
+    @Override
+    public String toString();
      
 }
 
 class BooleanField implements QuestionnaireValidator<Boolean> {
     private Boolean attribute;
+    private QuestionnaireData i  = new QuestionnaireData();
 
     public BooleanField(String attribute) throws QuestionnaireException{
         this.attribute = isValid(attribute);
@@ -26,7 +29,15 @@ class BooleanField implements QuestionnaireValidator<Boolean> {
         else 
             throw new QuestionnaireException("Inputan Anda salah");
               
-    }  
+    }
+    
+    @Override
+    public String toString() //method get baru khusus untuk mengembalikan keterangan kode Perkebunan
+    {
+        String ket = i.ketbool.get(attribute);
+        return ket;
+    }
+   
 }
 
 
@@ -34,7 +45,7 @@ class BooleanField implements QuestionnaireValidator<Boolean> {
 
 class IntegerField implements QuestionnaireValidator<Integer> {
     private Integer attribute;
-    private QuestionnaireData i; 
+    private QuestionnaireData i  = new QuestionnaireData(); 
     
     public IntegerField(String attribute) throws QuestionnaireException{
              this.attribute = isValid(attribute);
@@ -42,14 +53,7 @@ class IntegerField implements QuestionnaireValidator<Integer> {
 
     @Override
     public Integer getAttribute() {
-        return attribute; 
-    }
-    
-    @Override
-    public String toString() //method get baru khusus untuk mengembalikan keterangan kondisi perusahaan
-    { 
-        String ket = i.ketint.get(String.valueOf(attribute));
-        return ket;
+        return attribute;  
     }
     
     public Integer isValid(String attributes) throws QuestionnaireException {
@@ -62,7 +66,15 @@ class IntegerField implements QuestionnaireValidator<Integer> {
              return Integer.getInteger(attributes);
             
               
+    }
+    
+    @Override
+    public String toString() //method get baru khusus untuk mengembalikan keterangan kondisi perusahaan
+    { 
+        String ket = i.ketint.get(String.valueOf(attribute));
+        return ket;
     }    
+
 }
 
 
@@ -71,7 +83,7 @@ class IntegerField implements QuestionnaireValidator<Integer> {
 
 class StringField implements QuestionnaireValidator<String> {
     private String attribute;
-    private QuestionnaireData i;
+    private QuestionnaireData i = new QuestionnaireData();
 
     public StringField(String attribute) throws QuestionnaireException{
        this.attribute = isValid(attribute);         
@@ -82,32 +94,35 @@ class StringField implements QuestionnaireValidator<String> {
         return attribute;
     }
     
+    
+
+    
+    public String isValid(String attributes) throws QuestionnaireException {
+        
+        if (!(attributes.matches("3a|3b|3c|3d|3e|3f|3g|3h|3i|3j|3k|0")))
+           throw new QuestionnaireException("Input anda Salah");
+        
+         else return attributes;
+       
+    //sebelum pakai regex
+//        if (!(attributes == "3a" ||
+//            attributes == "3b" ||
+//            attributes == "3c" ||
+//            attributes == "3d" ||
+//            attributes == "3e" ||
+//            attributes == "3f" ||
+//            attributes == "3g" ||
+//            attributes == "3h" ||
+//            attributes == "3i" ||
+//            attributes == "3j" ||
+//            attributes == "3k" ||
+//            attributes == "0"))
+    }  
+    
     @Override
     public String toString() //method get baru khusus untuk mengembalikan keterangan kode Perkebunan
     {
         String ket = i.ketstr.get(attribute);
         return ket;
     }
-
-    
-    public String isValid(String attributes) throws QuestionnaireException {
-        
-        if (!(attributes == "3a" ||
-            attributes == "3b" ||
-            attributes == "3c" ||
-            attributes == "3d" ||
-            attributes == "3e" ||
-            attributes == "3f" ||
-            attributes == "3g" ||
-            attributes == "3h" ||
-            attributes == "3i" ||
-            attributes == "3j" ||
-            attributes == "3k" ||
-            attributes == "0"))
-           throw new QuestionnaireException("Input anda Salah");
-        
-         else return attributes;
-        
-              
-    }  
 }

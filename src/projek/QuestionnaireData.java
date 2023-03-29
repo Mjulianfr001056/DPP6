@@ -15,6 +15,7 @@ public class QuestionnaireData {
     private QuestionnaireValidator<Boolean> perikanan;           // kolom 19
     public HashMap<Integer,String> ketint = new HashMap<>();
     public HashMap<String,String>  ketstr = new HashMap<>();
+    public HashMap<Boolean,String> ketbool = new HashMap<>();
     
     public QuestionnaireData()
     {
@@ -42,6 +43,10 @@ public class QuestionnaireData {
         ketstr.put("3j", "Lada");
         ketstr.put("3k", "Tanaman Lainnya");
         ketstr.put("0", "Tidak Ada");
+        
+        //Field Boolean
+        ketbool.put(true, "Ada");
+        ketbool.put(false, "Tidak Ada");
     }
     
     
