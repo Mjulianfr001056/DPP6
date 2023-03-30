@@ -24,7 +24,7 @@ class CompanyName implements CompanyValidator{
 
     @Override
     public String isValid(String attribute) throws CompanyException {
-        if(attribute.length() < 3 || attribute.length() > 30 || !attribute.matches("[&a-zA-Z]+")){
+        if(attribute.length() < 3 || attribute.length() > 30 || !attribute.matches("[\\s&|a-zA-Z]+")){
             throw new CompanyException("Nama Perusahaan tidak sesuai");
         }
         return attribute;
@@ -49,7 +49,7 @@ class CompanyAddress implements CompanyValidator{
 
    @Override
     public String isValid(String attribute) throws CompanyException {
-        if(attribute.length() <20  || attribute.length() > 250 || !attribute.matches("[a-zA-Z]")){
+        if(attribute.length() <20  || attribute.length() > 250 || !attribute.matches("[\\s|a-zA-Z]")){
             throw new CompanyException("Alamat Perusahaan tidak sesuai");
         }
         return attribute;
