@@ -5,100 +5,154 @@
 package projek;
 
 /**
- *
- * @author KELOMPOK 6 DPP
+ * Merupakan class yang menyimpan Kode Identitas Perusahaaan (KIP), terdiri dari :
+ * Kode Provinsi,
+ * Kode Kabupaten,
+ * Kode Kecamatan,
+ * Kode KJU,
+ * Nomor Urut dalam 1 Kabupaten / Kota.
+ * @author KELOMPOK 6 DPP (Muhammad Restu Ilahi)
  */
 public class KIP {
     //properties
-    private KIPValidator kodeProvinsi;
-    private KIPValidator kodeKabupaten;
-    private String kodeKecamatan;
-    private String kodeKJU;
-    private String noUrutKabupatenKota;
-    /*
-    TODO Ubah Attribut
-    Ubah atribut pakai Interface KIP Validator semua
+    /**
+     * Kode Provinsi dimana perusahaan itu berada.
      */
+    private KIPValidator kodeProvinsi;
+    /**
+     * Kode Kabupaten/Kota dimana perusahaan itu berada.
+     */    
+    private KIPValidator kodeKabupaten;
+    /**
+     * Kode Kecamatan dimana perusahaan itu berada.
+     */    
+    private KIPValidator kodeKecamatan;
+    /**
+     * Kode KJU di sektor apa perusahaan itu bergerak.
+     * Terdiri dari 01-07.
+     */    
+    private KIPValidator kodeKJU;
+    /**
+     * No urut perusahaan itu dalam pencacahan di suatu kabupaten/kota.
+     */
+    private static KIPValidator noUrutKabupatenKota;
+
     //constructor
-
-
     public KIP() {
     }
 
-    public KIP(String kodeProvinsi, String kodeKabupaten, String kodeKecamatan, String kodeKJU, String noUrutKabupatenKota) throws KIPException{
+    public KIP(String kodeProvinsi, String kodeKabupaten, String kodeKecamatan, String kodeKJU) throws KIPException{
         this.kodeProvinsi = new KodeProvinsiValidator(kodeProvinsi);
         this.kodeKabupaten = new KodeKabupatenValidator(kodeKabupaten);
-        this.kodeKecamatan = kodeKecamatan;
-        this.kodeKJU = kodeKJU;
-        this.noUrutKabupatenKota = noUrutKabupatenKota;
+        this.kodeKecamatan = new KodeKecamatanValidator(kodeKecamatan);
+        this.kodeKJU = new KodeKJUValidator(kodeKJU);
 
-        /*
-        TODO Ubah constructor
-        1. Ubah semua atribut kode pakai new KodeValidator
-        2. Sesuaikan nama validatornya dengan atribut tsb karena validasinya beda-beda kan
-         */
+        KIP.noUrutKabupatenKota = KIP.noUrutKabupatenKota == null ? new NoUrutValidator("1") :
+                new NoUrutValidator(String.valueOf(Integer.parseInt(noUrutKabupatenKota.getCode())+1));
     }
 
-    //method
-//    public String getKodeProvinsi(){
-//        return this.kodeProvinsi;
-//    }
-//
-//    public void setKodeProvinsi(String kode){
-//        this.kodeProvinsi = kode;
-//    }
-//
-//    public String getKodeKabupaten(){
-//        return this.kodeKabupaten;
-//    }
-//
-//    public void setKodeKabupaten(String kode){
-//        this.kodeKabupaten = kode;
-//    }
-//
-//        public String getKodeKecamatan(){
-//        return this.kodeKecamatan;
-//    }
-//
-//    public void setKodeKecamatan(String kode){
-//        this.kodeKecamatan = kode;
-//    }
-//
-//        public String getKodeKJU(){
-//        return this.kodeKJU;
-//    }
-//
-//    public void setKodeKJU(String kode){
-//        this.kodeKJU = kode;
-//    }
+    /**
+     * Method untuk mengambil kode provinsi dari suatu perusahaan di database.
+     * @return {@code String}   kode provinsi dari perusahaan.
+     */
+    public String getKodeProvinsi() {
+        return kodeProvinsi.getCode();
+    }
 
-
+    /**
+     * Method untuk mengambil kode kabupaten dari suatu perusahaan di database.
+     * @return {@code String}   kode kabupaten dari perusahaan.
+     */
     public String getKodeKabupaten() {
-        return this.kodeKabupaten.getCode();
+        return kodeKabupaten.getCode();
     }
 
-    @Override
-    public String toString(){
-        return "Kode Provinsi : "+this.kodeProvinsi +", Kode Kabupaten : 0"+this.kodeKabupaten +", Kode Kecamatan : "+this.kodeKecamatan +", Kode KJU : "+this.kodeKJU+", No. Urut : "+this.noUrutKabupatenKota;
+    /**
+     * Method untuk mengambil kode kecamatan dari suatu perusahaan di database.
+     * @return {@code String}   kode kecamatan dari perusahaan.
+     */
+    public String getKodeKecamatan() {
+        return kodeKecamatan.getCode();
     }
 
-    public static void main(String[] args) {
-        //Testing code goes here
-        KIP kip = new KIP();
-        try{
-            kip = new KIP("02", "1", "0", "0", "0");
+    /**
+     * Method untuk mengambil kode KJU dari suatu perusahaan di database.
+     * @return {@code String}   kode KJU dari perusahaan.
+     */    
+    public String getKodeKJU() {
+        return kodeKJU.getCode();
+    }
 
-        }catch (Exception e){
-            System.out.println(e.getMessage());
+    /**
+     * Method untuk mengambil no urut dari suatu perusahaan di database.
+     * @return {@code String}   no urut dari perusahaan.
+     */
+    public static String getNoUrutKabupatenKota() {
+        return noUrutKabupatenKota.getCode();
+    }
+
+    /**
+     * Merupakan method untuk menyunting kode provinsi suatu perusahaan di database.
+     * @param kodeProvinsi      Merupakan nilai yang akan diinput ke kode provinsi.
+     */
+    public void setKodeProvinsi(String kodeProvinsi) {
+        try {
+            this.kodeProvinsi = new KodeProvinsiValidator(kodeProvinsi);
+        }catch (KIPException e){
+            System.out.println("Gagal melakukan penyuntingan kode provinsi");
+        }
+    }
+
+    /**
+     * Merupakan method untuk menyunting kode kabupaten suatu perusahaan di database.
+     * @param kodeKabupaten      Merupakan nilai yang akan diinput ke kode kabupaten.
+     */
+    public void setKodeKabupaten(String kodeKabupaten) {
+        try {
+            this.kodeKabupaten = new KodeKabupatenValidator(kodeKabupaten);
+        }catch (KIPException e){
+            System.out.println("Gagal melakukan penyuntingan kode kabupaten");
         }
 
-        /*
-        TODO Testdrive
-        misal udh semua dibuat, coba masukin KIP yang pake kasus riil, klo berhasil bisa pull request yak
-         */
+    }
 
-        //System.out.println(kip.getKodeKabupaten());
+    /**
+     * Merupakan method untuk menyunting kode kecamatan suatu perusahaan di database.
+     * @param kodeKecamatan      merupakan nilai yang akan diinput ke kode kecamatan.
+     */    
+    public void setKodeKecamatan(String kodeKecamatan) {
+        try {
+            this.kodeKecamatan = new KodeKecamatanValidator(kodeKecamatan);
+        }catch (KIPException e){
+            System.out.println("Gagal melakukan penyuntingan kode kecamatan");
+        }
 
     }
-    
+
+    /**
+     * Merupakan method untuk menyunting kode KJU suatu perusahaan di database.
+     * @param kodeKJU      merupakan nilai yang akan diinput ke kode KJU.
+     */
+    public void setKodeKJU(String kodeKJU) {
+        try {
+            this.kodeKJU = new KodeKJUValidator(kodeKJU);
+        }catch (KIPException e){
+            System.out.println("Gagal melakukan penyuntingan kode KJU");
+        }
+
+    }
+
+    /**
+     * Merupakan method untuk menampilkan seluruh informasi terkait Kode Identitas Perusahaan (KIP)
+     * @return  {@code String}  Merupakan informasi terkait kode provinsi, kode kabupaten, kode kecamatan,
+     *                          kode KJU, dan nomor urut suatu perusahaan di dalam 1 kabupaten/kota di database.
+     */
+    @Override
+    public String toString(){
+        return "Kode Provinsi : " + getKodeProvinsi() +
+                ", Kode Kabupaten : " + getKodeKabupaten() +
+                ", Kode Kecamatan : " + getKodeKecamatan() +
+                ", Kode KJU : " + getKodeKJU() +
+                ", No. Urut : " + KIP.noUrutKabupatenKota.getCode();
+    }
 }

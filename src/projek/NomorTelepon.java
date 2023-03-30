@@ -11,18 +11,21 @@ package projek;
 public class NomorTelepon extends NomorKontak{
     public NomorTelepon() {
     }
-//    @Override
-//    public void cetakNomor() {
-//        System.out.println("(" + nomorKontak.substring(0, 3) + ")" + nomorKontak.substring(4, nomorKontak.length()) + ")");
-//    }
 
+    public NomorTelepon(String nomor){
+        try{
+            super.nomorKontak = new TelephoneValidator(nomor);
+        }catch (InvalidNumberException e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
     @Override
     public void cetakNomor() {
-
+        String nomor = super.getNomorKontak();
+        System.out.println("(" + nomor.substring(0, 4) + ") " +
+                nomor.substring(4));
     }
+
 }
 
-/*
-    TODO Implementasi NomorTelepon
-    Ini tinggal nyamakan dengan yang di Nomor Faksimile
- */
