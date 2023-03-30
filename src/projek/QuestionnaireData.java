@@ -13,6 +13,7 @@ public class QuestionnaireData {
     private QuestionnaireValidator<Boolean> peternakan;          // kolom 17
     private QuestionnaireValidator<Boolean> kehutanan;           // kolom 18
     private QuestionnaireValidator<Boolean> perikanan;           // kolom 19
+    
     public HashMap<Integer,String> ketint = new HashMap<>();
     public HashMap<String,String>  ketstr = new HashMap<>();
     public HashMap<Boolean,String> ketbool = new HashMap<>();
