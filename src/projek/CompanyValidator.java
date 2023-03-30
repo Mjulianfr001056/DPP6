@@ -49,12 +49,11 @@ class CompanyAddress implements CompanyValidator{
 
    @Override
     public String isValid(String attribute) throws CompanyException {
-        if(attribute.length() <20  || attribute.length() > 250 || !attribute.matches("[\\s|a-zA-Z]")){
+        if(attribute.length() > 250 || !attribute.matches("[\\s|a-z|A-Z]+")){
             throw new CompanyException("Alamat Perusahaan tidak sesuai");
         }
         return attribute;
     }
-        
 } 
     
 class CompanyBentukBadanHukum implements CompanyValidator{
