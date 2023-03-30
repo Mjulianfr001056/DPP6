@@ -148,10 +148,6 @@ public class QuestionnaireData {
                 "\nKehutanan : "+map(getKehutanan())+
                 "\nPerikanan : "+map(getPerikanan());
     }
-
-    public static void main(String[] args) {
-        QuestionnaireData QD = new QuestionnaireData();
-    }
 }
 
 final class KondisiPerusahaanMap {
