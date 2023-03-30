@@ -2,9 +2,7 @@ package projek;
 
 public interface QuestionnaireValidator<R> {
     R getAttribute();
-    @Override
-    public String toString();
-     
+    R isValid(String attributes) throws QuestionnaireException;
 }
 
 class BooleanField implements QuestionnaireValidator<Boolean> {
@@ -20,7 +18,7 @@ class BooleanField implements QuestionnaireValidator<Boolean> {
         return attribute;
     }
 
-    public boolean isValid(String attributes) throws QuestionnaireException {
+    public Boolean isValid(String attributes) throws QuestionnaireException {
         
         if (attributes == "1")
            return true;
@@ -30,14 +28,14 @@ class BooleanField implements QuestionnaireValidator<Boolean> {
             throw new QuestionnaireException("Inputan Anda salah");
               
     }
-    
-    @Override
-    public String toString() //method get baru khusus untuk mengembalikan keterangan kode Perkebunan
-    {
-        String ket = i.ketbool.get(attribute);
-        return ket;
-    }
-   
+
+//    @Override
+//    public String toString() //method get baru khusus untuk mengembalikan keterangan kode Perkebunan
+//    {
+//        String ket = i.ketbool.get(attribute);
+//        return ket;
+//    }
+
 }
 
 
@@ -48,7 +46,7 @@ class IntegerField implements QuestionnaireValidator<Integer> {
     private QuestionnaireData i  = new QuestionnaireData(); 
     
     public IntegerField(String attribute) throws QuestionnaireException{
-             this.attribute = isValid(attribute);
+        this.attribute = isValid(attribute);
     }
 
     @Override
@@ -57,23 +55,21 @@ class IntegerField implements QuestionnaireValidator<Integer> {
     }
     
     public Integer isValid(String attributes) throws QuestionnaireException {
-          
        if (!(attributes.matches("\\d") || attributes.matches("[123456789]")))
        {
             throw new QuestionnaireException("Inputan Anda salah");
        }
-         else 
-             return Integer.getInteger(attributes);
-            
-              
+         else {
+           return Integer.parseInt(attributes);
+       }
     }
-    
-    @Override
-    public String toString() //method get baru khusus untuk mengembalikan keterangan kondisi perusahaan
-    { 
-        String ket = i.ketint.get(String.valueOf(attribute));
-        return ket;
-    }    
+
+//    @Override
+//    public String toString() //method get baru khusus untuk mengembalikan keterangan kondisi perusahaan
+//    {
+//        String ket = i.map.get(String.valueOf(attribute));
+//        return ket;
+//    }
 
 }
 
@@ -119,10 +115,10 @@ class StringField implements QuestionnaireValidator<String> {
 //            attributes == "0"))
     }  
     
-    @Override
-    public String toString() //method get baru khusus untuk mengembalikan keterangan kode Perkebunan
-    {
-        String ket = i.ketstr.get(attribute);
-        return ket;
-    }
+//    @Override
+//    public String toString() //method get baru khusus untuk mengembalikan keterangan kode Perkebunan
+//    {
+//        String ket = i.mapPerkebunan.get(attribute);
+//        return ket;
+//    }
 }
