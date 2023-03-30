@@ -21,9 +21,9 @@ class BooleanField implements QuestionnaireValidator<Boolean> {
 
     public Boolean isValid(String attributes) throws QuestionnaireException {
         
-        if (attributes == "1")
+        if (attributes.equalsIgnoreCase("1"))
            return true;
-         else if (attributes == "0")
+         else if (attributes.equalsIgnoreCase("0"))
             return false;
         else 
             throw new QuestionnaireException("Inputan Anda salah");
