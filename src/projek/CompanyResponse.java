@@ -11,7 +11,6 @@ public class CompanyResponse {
     }
 
     public void setJenisUsahaUtama(String jenisUsahaUtama) throws QuestionnaireException {
-
         if(!jenisUsahaUtama.matches("[1-9]|1[0-1]")){
             throw new QuestionnaireException("Jenis usaha utama harus berada di rentang 1-11");
         }
@@ -30,7 +29,7 @@ public class CompanyResponse {
         if (jenisUsahaUtama.matches("[7-8]") && !questionnaireData.getPerikanan()) {
             throw new QuestionnaireException("Jenis usaha utama tidak berpasangan!");
         }
-        if (jenisUsahaUtama.matches("9|[10]|[11]") && !questionnaireData.getPeternakan()) {
+        if (jenisUsahaUtama.matches("9|10|11") && !questionnaireData.getPeternakan()) {
             throw new QuestionnaireException("Jenis usaha utama tidak berpasangan!");
         }
 
