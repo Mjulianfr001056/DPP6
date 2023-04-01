@@ -35,7 +35,7 @@ public class KIP {
     /**
      * No urut perusahaan itu dalam pencacahan di suatu kabupaten/kota.
      */
-    private static KIPValidator noUrutKabupatenKota;
+    private KIPValidator noUrutKabupatenKota;
 
     //constructor
     public KIP() {
@@ -46,9 +46,14 @@ public class KIP {
         this.kodeKabupaten = new KodeKabupatenValidator(kodeKabupaten);
         this.kodeKecamatan = new KodeKecamatanValidator(kodeKecamatan);
         this.kodeKJU = new KodeKJUValidator(kodeKJU);
+    }
 
-        KIP.noUrutKabupatenKota = KIP.noUrutKabupatenKota == null ? new NoUrutValidator("1") :
-                new NoUrutValidator(String.valueOf(Integer.parseInt(noUrutKabupatenKota.getCode())+1));
+    public KIP(String kodeProvinsi, String kodeKabupaten, String kodeKecamatan, String kodeKJU, String noUrutKabupatenKota) throws KIPException{
+        this.kodeProvinsi = new KodeProvinsiValidator(kodeProvinsi);
+        this.kodeKabupaten = new KodeKabupatenValidator(kodeKabupaten);
+        this.kodeKecamatan = new KodeKecamatanValidator(kodeKecamatan);
+        this.kodeKJU = new KodeKJUValidator(kodeKJU);
+        this.noUrutKabupatenKota = new NoUrutValidator(noUrutKabupatenKota);
     }
 
     /**
@@ -87,7 +92,7 @@ public class KIP {
      * Method untuk mengambil no urut dari suatu perusahaan di database.
      * @return {@code String}   no urut dari perusahaan.
      */
-    public static String getNoUrutKabupatenKota() {
+    public String getNoUrutKabupatenKota() {
         return noUrutKabupatenKota.getCode();
     }
 
@@ -153,6 +158,6 @@ public class KIP {
                 ", Kode Kabupaten : " + getKodeKabupaten() +
                 ", Kode Kecamatan : " + getKodeKecamatan() +
                 ", Kode KJU : " + getKodeKJU() +
-                ", No. Urut : " + KIP.noUrutKabupatenKota.getCode();
+                ", No. Urut : " + getNoUrutKabupatenKota();
     }
 }

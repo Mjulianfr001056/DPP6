@@ -1,4 +1,5 @@
-//package projek;
-//
-//public record QuestionnaireHeader() {
-//}
+package projek;
+
+public record QuestionnaireHeader(String kodeProvinsi, String kodeKabupaten, String tanggal) {
+    
+}

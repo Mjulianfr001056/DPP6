@@ -5,14 +5,14 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class KIPTest {
-    @Test
-    void NoUrutShouldIncrease(){
-        try{
-            assertEquals("4", KIP.getNoUrutKabupatenKota());
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-    }
+//    @Test
+//    void NoUrutShouldIncrease(){
+//        try{
+//            assertEquals("4", KIP.getNoUrutKabupatenKota());
+//        }catch (Exception e){
+//            System.out.println(e.getMessage());
+//        }
+//    }
     @Test
     void ConstructorFirstTest(){
         try{
