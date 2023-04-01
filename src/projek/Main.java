@@ -1,20 +1,32 @@
 package projek;
 
-import static java.lang.System.in;
-
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Main {
     private static void ClearInputBuffer(Scanner scanner) {
         scanner.skip(".*\n");
     }
-    private static ArrayList<CompanyData> companyList = new ArrayList<>();
+    private static ArrayList<CompanyData> sheets = new ArrayList<>();
+
+    private static void validateNoUrut(String kodeProvinsi, String kodeKabupaten, String noUrut)
+            throws QuestionnaireException{
+        if (sheets.size()>0)
+        for (CompanyData companyData : sheets){
+            String tmpKodeProvinsi = companyData.kip().getKodeProvinsi();
+            String tmpKodeKabupaten = companyData.kip().getKodeKabupaten();
+            String tmpNoUrut = companyData.kip().getNoUrutKabupatenKota();
+
+            if (tmpKodeProvinsi.equalsIgnoreCase(kodeProvinsi) &&
+            tmpKodeKabupaten.equalsIgnoreCase(kodeKabupaten) &&
+            noUrut.equalsIgnoreCase(tmpNoUrut)) throw new QuestionnaireException("No urut sudah digunakan!");
+        }
+    }
     public static void tampilMenu() {
 
         Scanner in = new Scanner(System.in);
         boolean quit = false;
-        ulangAwal:
         do {
             System.out.println("Silakan Pilih Menu yang Tersedia!");
             System.out.println("Pilihan Menu: ");
@@ -28,13 +40,12 @@ public class Main {
 
         switch(menu) { //Menu Nomor 1 (Entri Data) -> Informasi Kuesioner, KIP, Perusahaan, Hasil
             case "1" -> {
-                KIP kip;
+                QuestionnaireHeader questionnaireHeader =
+                        new QuestionnaireHeader("00", "00", "00");
                 try {
                     String tmpKodeProvinsi = "";
                     String tmpKodeKabupaten = "";
-                    String tmpKodeKecamatan = "";
-                    String tmpKodeKJU = "";
-                    String tmpNoUrut = "";
+                    String periodeKuesioner = "";
 
                     System.out.println("Kode Provinsi: ");
                     tmpKodeProvinsi = in.next();
@@ -44,27 +55,60 @@ public class Main {
                     tmpKodeKabupaten = in.next();
                     ClearInputBuffer(in);
 
-                    System.out.println("Kode Kecamatan: ");
-                    tmpKodeKecamatan = in.next();
-                    ClearInputBuffer(in);
+                    System.out.println("Periode Kuesioner: ");
+                    periodeKuesioner = in.nextLine();
 
-                    System.out.println("Kode KJU: ");
-                    tmpKodeKJU = in.next();
-                    ClearInputBuffer(in);
+                    KIPValidator kodeProvinsi = new KodeProvinsiValidator(tmpKodeProvinsi);
+                    KIPValidator kodeKabupaten = new KodeKabupatenValidator(tmpKodeKabupaten);
 
-//                    System.out.println("Nomor Urut dalam Satu Kabupaten/Kota: ");
-//                    tmpNoUrut = in.next();
-//                    ClearInputBuffer(in);
-
-                    kip = new KIP(tmpKodeProvinsi, tmpKodeKabupaten, tmpKodeKecamatan, tmpKodeKJU);
+                    questionnaireHeader = new QuestionnaireHeader(kodeProvinsi.getCode(),
+                            kodeKabupaten.getCode(),
+                            periodeKuesioner);
                 }catch (Exception e) {
                     System.out.println(e.getMessage());
-                    continue ulangAwal;
+                    break;
                 }
 
-                Company company = new Company();
-
+                KIP kip = new KIP();
                 boolean quitFlag = false;
+                do {
+                    try{
+                        String tmpKodeProvinsi = "";
+                        String tmpKodeKabupaten = "";
+                        String tmpKodeKecamatan = "";
+                        String tmpKodeKJU = "";
+                        String tmpNoUrut = "";
+
+                        System.out.println("Kode Provinsi: ");
+                        tmpKodeProvinsi = in.next();
+                        ClearInputBuffer(in);
+
+                        System.out.println("Kode Kabupaten/Kota: ");
+                        tmpKodeKabupaten = in.next();
+                        ClearInputBuffer(in);
+
+                        System.out.println("Kode Kecamatan: ");
+                        tmpKodeKecamatan = in.next();
+                        ClearInputBuffer(in);
+
+                        System.out.println("Kode KJU: ");
+                        tmpKodeKJU = in.next();
+                        ClearInputBuffer(in);
+
+                        System.out.println("Nomor Urut dalam Satu Kabupaten/Kota: ");
+                        tmpNoUrut = in.next();
+                        ClearInputBuffer(in);
+
+                        validateNoUrut(tmpKodeProvinsi, tmpKodeKabupaten, tmpNoUrut);
+
+                        kip = new KIP(tmpKodeProvinsi, tmpKodeKabupaten, tmpKodeKecamatan, tmpKodeKJU, tmpNoUrut);
+                        quitFlag = true;
+                    }catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                }while(!quitFlag);
+
+                Company company = new Company();
                 do{
                     try{
                         String tmpNamaPerusahaan = "";
@@ -214,7 +258,7 @@ public class Main {
                     }
                 }while(!quitFlag);
 
-                companyList.add(new CompanyData(kip, company, companyResponse));
+                sheets.add(new CompanyData(questionnaireHeader, kip, company, companyResponse));
             }
             case "2" -> {
                 System.out.println("Tampilkan Data yang Telah Di Entri");
