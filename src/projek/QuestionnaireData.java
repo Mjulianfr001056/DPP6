@@ -14,41 +14,19 @@ public class QuestionnaireData {
     private QuestionnaireValidator<Boolean> kehutanan;           // kolom 18
     private QuestionnaireValidator<Boolean> perikanan;           // kolom 19
 
-    
-    public HashMap<Integer,String> ketint = new HashMap<>();
-    public HashMap<String,String>  ketstr = new HashMap<>();
-    public HashMap<Boolean,String> ketbool = new HashMap<>();
-    
-    public QuestionnaireData()
-    {
-        //Kondisi Perusahaan
-        ketint.put(1, "Aktif");
-        ketint.put(2, "Tutup Sementara/Tidak Ada Kegiatan");
-        ketint.put(3, "Belum Berproduksi");
-        ketint.put(4, "Tidak Bersedia Diwawancarai");
-        ketint.put(5, "Alih Usaha ke Non Pertanian");
-        ketint.put(6, "Tutup");
-        ketint.put(7, "Tidak Ditemukan");
-        ketint.put(8, "Baru");
-        ketint.put(9, "Ganda");
-        
-        //Subsektor Perkebunan
-        ketstr.put("3a","Kakao/Cokelat");
-        ketstr.put("3b", "Karet");
-        ketstr.put("3c", "Kelapa Sawit");
-        ketstr.put("3d", "Kopi");
-        ketstr.put("3e", "Teh");
-        ketstr.put("3f", "Tebu");
-        ketstr.put("3g", "Tembakau");
-        ketstr.put("3h", "Cengkih");
-        ketstr.put("3i", "Kelapa");
-        ketstr.put("3j", "Lada");
-        ketstr.put("3k", "Tanaman Lainnya");
-        ketstr.put("0", "Tidak Ada");
-        
-        //Field Boolean
-        ketbool.put(true, "Ada");
-        ketbool.put(false, "Tidak Ada");
+    public QuestionnaireData() {
+        try{
+            confirmed = new BooleanField("0");
+            kondisiPerusahaan = new IntegerField("0");
+            tanamanPangan = new BooleanField("0");
+            hortikultura = new BooleanField("0");
+            perkebunan = new StringField("0");
+            peternakan = new BooleanField("0");
+            kehutanan = new BooleanField("0");
+            perikanan = new BooleanField("0");
+        }catch (QuestionnaireException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public boolean getConfirmed() {
@@ -186,6 +164,7 @@ final class KondisiPerusahaanMap {
         map.put(7, "Tidak Ditemukan");
         map.put(8, "Baru");
         map.put(9, "Ganda");
+        map.put(0, "NA");
     }
 
     public static KondisiPerusahaanMap getInstance() {
@@ -213,7 +192,7 @@ final class PerkebunanMap {
         map.put("3i", "Kelapa");
         map.put("3j", "Lada");
         map.put("3k", "Tanaman Lainnya");
-        map.put("0", "Tidak Ada");
+        map.put("0", "NA");
     }
 
     public static PerkebunanMap getInstance() {
