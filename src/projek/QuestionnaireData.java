@@ -1,7 +1,7 @@
 
 package projek;
 
-import java.util.Scanner;
+import java.util.HashMap;
 
 /**
  * Merupakan sebuah class untuk menyimpan pilihan pada kondisi perusahaan dan subsektor, terdiri dari :
@@ -18,58 +18,14 @@ import java.util.Scanner;
  * 
  */
 public class QuestionnaireData {
-    
-    private QuestionnaireValidator<Boolean> confirmed;  // kolom12
    
-    /**
-     * Konfirmasi keberadaan perusahaan jika telah dikunjungi atau mendapat informasi dari pihak lain.
-     */
     private QuestionnaireValidator<Boolean> confirmed;           // kolom 12
-    
-    /**
-     * Keterangan kondisi perusahaan saat ini.
-     */
     private QuestionnaireValidator<Integer> kondisiPerusahaan;   // kolom 13
-    
-    /**
-     * Pilihan jika perusahaan termasuk dalam subsektor Tanaman Pangan.
-     */
     private QuestionnaireValidator<Boolean> tanamanPangan;       // kolom 14
-    
-    /**
-     * Pilihan jika perusahaan termasuk dalam subsektor Hortikultura.
-     */
     private QuestionnaireValidator<Boolean> hortikultura;        // kolom 15
-    
-    /**
-     * Pilihan jika perusahaan termasuk dalam subsektor Perkebunan. Perkebunan juga terbagi atas 11 sektor:
-     * a. Kakao/Cokelat, 
-     * b. Karet, 
-     * c. Kelapa Sawit, 
-     * d. Kopi, 
-     * e. Teh, 
-     * f. Tebu, 
-     * g. Tembakau
-     * h. Cengkeh, 
-     * i. Kelapa, 
-     * j. Lada, dan
-     * k. Tanaman Lainnya.
-     */
     private QuestionnaireValidator<String>  perkebunan;           // kolom 16
-    
-    /**
-     * Pilihan jika perusahaan termasuk dalam subsektor Peternakan.
-     */
     private QuestionnaireValidator<Boolean> peternakan;          // kolom 17
-    
-    /**
-     * Pilihan jika perusahaan termasuk dalam subsektor Kehutanan.
-     */
     private QuestionnaireValidator<Boolean> kehutanan;           // kolom 18
-    
-    /**
-     * Pilihan jika perusahaan termasuk dalam subsektor Perikanan.
-     */
     private QuestionnaireValidator<Boolean> perikanan;           // kolom 19
 
     
@@ -77,9 +33,6 @@ public class QuestionnaireData {
     public HashMap<String,String>  ketstr = new HashMap<>();
     public HashMap<Boolean,String> ketbool = new HashMap<>();
     
-    /**
-     * Method yang menyimpan nilai untuk divalidasi pada class QuestinnaireData()
-     */
     public QuestionnaireData()
     {
         //Kondisi Perusahaan
@@ -112,10 +65,6 @@ public class QuestionnaireData {
         ketbool.put(false, "Tidak Ada");
     }
 
-    /**
-     * Merupakan method untuk mengambil konfirmasi keberadaan perusahaan di database.
-     * @return {@code boolean} konfirmasi keberadaan perusahaan.
-     */
     public boolean getConfirmed() {
         return confirmed.getAttribute().booleanValue();
     }
@@ -197,7 +146,50 @@ public class QuestionnaireData {
      * @return {@code String} Status Perkebunan Perusahaan.
      */
     public String getPerkebunan() {
-        return perkebunan;
+        //return perkebunan.getAttribute().toString();
+        return perkebunan.getAttribute();
+    }
+
+    public void setPerkebunan(String perkebunan){
+        try {
+            this.perkebunan = new StringField(perkebunan);
+        } catch(QuestionnaireException e) {
+            System.out.println("Isian Salah");
+        }
+    }
+
+    public boolean getPeternakan() {
+        return peternakan.getAttribute().booleanValue();
+    }
+
+    public void setPeternakan(String peternakan){
+       try {
+        this.peternakan = new BooleanField(peternakan);
+       } catch(QuestionnaireException e) {System.out.println("Isian Salah");}
+    }
+
+    public boolean getKehutanan() {
+        return kehutanan.getAttribute().booleanValue();
+    }
+
+    public void setKehutanan(String kehutanan){
+       try{
+           this.kehutanan = new BooleanField(kehutanan);
+       } catch (QuestionnaireException e) {
+           System.out.println("Isian Salah");
+       }
+    }
+
+    public boolean getPerikanan() {
+        return perikanan.getAttribute().booleanValue();
+    }
+
+    public void setPerikanan(String perikanan){
+       try{
+           this.perikanan = new BooleanField(perikanan);
+       } catch (QuestionnaireException e) {
+           System.out.println("Isian Salah");
+       }
     }
 
     /**
@@ -258,25 +250,12 @@ public class QuestionnaireData {
         return perikanan.getAttribute().booleanValue();
     }
 
-    /**
-     * Merupakan method untuk menyunting status Perikanan perusahaan di database.
-     * @param perikanan Merupakan nilai yang akan diinput ke dalam Perikanan.
-     */
-    public void setPerikanan(String perikanan){
-       try{
-           this.perikanan = new BooleanField(perikanan);
-       } catch (QuestionnaireException e) {
-           System.out.println("Isian Salah");
-       }
+    public void setPeternakan(int peternakan1) {
+        this.peternakan = keterangan.SubsektorPeternakan(peternakan1);
     }
 
-    /**
-     * Melakukan mapping untuk nilai boolean untuk konfirmasi dan status subsektor perusahaan. 
-     * @param mapped Nilai inputan boolean yang akan di mapping.
-     * @return True bernilai "Ya" dan False bernilai "Tidak".
-     */
-    public static String map(Boolean mapped){
-        return mapped ? "Ya" : "Tidak";
+    public boolean isKehutanan() {
+        return kehutanan;
     }
 
     /**
@@ -399,9 +378,9 @@ final class PerkebunanMap {
     public String getValue(String key) {
         return map.get(key);
     }
+    public String getValue(String key) {
+        return map.get(key);
+    }
 }
 
-/*
-TODO sesuaikan lagi get dan set nya
- */
 

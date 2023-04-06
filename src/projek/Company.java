@@ -12,12 +12,12 @@ public class Company {
     private CompanyValidator nama;
     private CompanyValidator alamat;
     private CompanyValidator bentukBadanHukum;
-
-    //Tambahan di company bisa punya nomor kontak yekan
     private NomorKontak nomorFax;
     private NomorKontak nomorTelefon;
 
-    
+    public Company() {
+    }
+
     public String getNama(){
         return nama.getAttribute();
     }
@@ -27,26 +27,32 @@ public class Company {
     public String getBentukBadanHukum(){
         return bentukBadanHukum.getAttribute();
     }
-    
-    public void setNama(String nama) throws CompanyException{
+
+    public String getNomorFax() {
+        return nomorFax.getNomorKontak();
+    }
+    public String getNomorTelefon() {
+        return nomorTelefon.getNomorKontak();
+    }
+
+    public void setNama(String nama){
         this.nama = new CompanyName(nama);
     }
 
-    public void setNomorFax(String nomorFax) throws InvalidNumberException{
+    public void setAlamat(String alamat){
+        this.alamat = new CompanyAddress(alamat);
+    }
+    
+   public void setBentukBadanHukum(String bentukBadanHukum){
+       this.bentukBadanHukum = new CompanyBentukBadanHukum(bentukBadanHukum);
+    }
+   
+    public void setNomorFax(String nomorFax){
         this.nomorFax = new NomorFaksimile(nomorFax);
     }
-
-    //    public void setAlamat(String alamat){
-//        this.alamat = alamat;
-//    }
-//    public void setBentukBadanHukum(String bentukBadanHukum){
-//        this.bentukBadanHukum = bentukBadanHukum;
-//    }
-
-    /*
-    TODO Implementasi set
-    1. Buat setter dari alamat dan bentuk badan hukum
-    2. Template nya mirip kek setNama()
-
-     */
+    
+    public void setNomorTelefon(String nomorTelefon){
+        this.nomorTelefon = new NomorTelepon(nomorTelefon);
+    }
+    
 }

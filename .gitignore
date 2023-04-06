@@ -4,3 +4,6 @@
 *.xml
 /dist/
 *.xml
+*.class
+*.class
+*.class
