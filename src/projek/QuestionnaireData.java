@@ -1,7 +1,21 @@
 package projek;
 
 import java.util.HashMap;
-
+/**
+ * Merupakan sebuah class untuk menyimpan pilihan pada kondisi perusahaan dan subsektor, terdiri dari :
+ * Konfirmasi Keberadaan Perusahaan,
+ * Kondisi Perusahaan,
+ * 6 subsektor yang terdiri atas :
+ * Tanaman Pangan,
+ * Hortikultura,
+ * Perkebunan,
+ * Peternakan,
+ * Kehutanan, dan
+ * Perikanan.
+ *@author Kelompok 6 DPP : Rifky Maulana Putra
+ *@author Kelompok 6 DPP : Rizky Rahmadani
+ * 
+ */
 public class QuestionnaireData {
    
     private QuestionnaireValidator<Boolean> confirmed;           // kolom 12
@@ -32,6 +46,10 @@ public class QuestionnaireData {
         return confirmed.getAttribute().booleanValue();
     }
 
+    /**
+     * Merupakan method untuk menyunting status Konfirmasi Keberadaan Perusahaan di database.
+     * @param confirmed Merupakan nilai yang akan diinput ke Konfirmasi Keberadaan Perusahaan.
+     */
     public void setConfirmed(String confirmed){
         try {
             this.confirmed = new BooleanField(confirmed);
@@ -40,10 +58,18 @@ public class QuestionnaireData {
         }
     }
 
+    /**
+     * Merupakan method untuk mengambil konfirmasi keberadaan perusahaan di database.
+     * @return {@code int} Kondisi perusahaan.
+     */
     public int getKondisiPerusahaan() {    
        return kondisiPerusahaan.getAttribute().intValue();
     }
 
+     /**
+     * Merupakan method untuk menyunting Kondisi Perusahaan di database
+     * @param kondisiPerusahaan Merupakan nilai yang akan diinput ke Kondisi Perusahaan.
+     */
     public void setKondisiPerusahaan(String kondisiPerusahaan){
        try {
            this.kondisiPerusahaan = new IntegerField(kondisiPerusahaan);
@@ -52,10 +78,18 @@ public class QuestionnaireData {
        }
     }
 
+    /**
+     * Merupakan method untuk mengambil status Tanaman Pangan perusahaan di databse.
+     * @return {@code boolean} Status Tanaman Pangan Perusahaan.
+     */
     public boolean getTanamanPangan() {
         return tanamanPangan.getAttribute().booleanValue();
     }
 
+    /**
+     * Merupakan method untuk menyunting status Tanaman Pangan perusahaan di database.
+     * @param tanamanPangan Merupakan nilai yang akan diinput ke Tanaman Pangan.
+     */
     public void setTanamanPangan(String tanamanPangan){
         try {
             this.tanamanPangan = new BooleanField(tanamanPangan);
@@ -64,10 +98,18 @@ public class QuestionnaireData {
         }
     }
 
+    /**
+     * Merupakan method untuk mengambil status Hortikultura perusahaan di database.
+     * @return {@code boolean} Status Hortikultura perusahaan.
+     */
     public boolean getHortikultura() {
         return hortikultura.getAttribute().booleanValue();
     }
 
+    /**
+     * Merupakan method untuk menyunting status Hortikultura perusahaan di database.
+     * @param hortikultura Merupakan nilai yang akan diinput ke Hortikultura.
+     */
     public void setHortikultura(String hortikultura){
         try {
             this.hortikultura = new BooleanField(hortikultura);
@@ -76,11 +118,19 @@ public class QuestionnaireData {
         }
     }
 
+     /**
+     * Merupakan method untuk mengambil status Perkebunan perusahaan di database.
+     * @return {@code String} Status Perkebunan Perusahaan.
+     */
     public String getPerkebunan() {
         //return perkebunan.getAttribute().toString();
         return perkebunan.getAttribute();
     }
 
+    /**
+     * Merupakan method untuk menyunting status Perkebunan perusahaan di database.
+     * @param perkebunan Merupakan nilai yang akan diinput ke dalam Perkebunan.
+     */
     public void setPerkebunan(String perkebunan){
         try {
             this.perkebunan = new StringField(perkebunan);
@@ -89,20 +139,38 @@ public class QuestionnaireData {
         }
     }
 
+    /**
+     * Merupakan method untuk mengambil status Peternakan perusahaan di database.
+     * @return {@code boolean} Status Peternakan Perusahaan
+     */
     public boolean getPeternakan() {
         return peternakan.getAttribute().booleanValue();
     }
 
+    /**
+     * Merupakan method untuk menyunting status Peternakan perusahaan di database.
+     * @param peternakan Merupakan nilai yang akan diinput ke dalam Peternakan.
+     */
     public void setPeternakan(String peternakan){
-       try {
-        this.peternakan = new BooleanField(peternakan);
-       } catch(QuestionnaireException e) {System.out.println("Isian Salah");}
+        try {
+            this.peternakan = new BooleanField(peternakan);
+        } catch(QuestionnaireException e) {
+            System.out.println("Isian Salah");
+        }
     }
 
+    /**
+     * Merupakan method untuk mengambil status Kehutanan perusahaan di database.
+     * @return {@code boolean} Status Kehutanan Perusahaan.
+     */
     public boolean getKehutanan() {
         return kehutanan.getAttribute().booleanValue();
     }
 
+    /**
+     * Merupakan method untuk menyunting status Kehutanan perusahaan di database.
+     * @param kehutanan Merupakan nilai yang akan diinput ke dalam Kehutanan.
+     */
     public void setKehutanan(String kehutanan){
        try{
            this.kehutanan = new BooleanField(kehutanan);
@@ -111,6 +179,10 @@ public class QuestionnaireData {
        }
     }
 
+     /**
+     * Merupakan method untuk mengambil status Perikanan perusahaan di database.
+     * @return {@code boolean} Status Perikanan Perusahaan.
+     */
     public boolean getPerikanan() {
         return perikanan.getAttribute().booleanValue();
     }
@@ -127,14 +199,29 @@ public class QuestionnaireData {
         return mapped ? "Ya" : "Tidak";
     }
 
+    /**
+     * Melakukan mapping untuk nilai integer pada kondisi dan status subsektor perusahaan.
+     * @param mapped Nilai inputan integer yang akan di mapping.
+     * @return Nilai kondisi perusahaan yang sesuai pada class KondisiPerusahaanMap.
+     */
     public static String map(Integer mapped){
         return KondisiPerusahaanMap.getInstance().getValue(mapped.intValue());
     }
 
+    /**
+     * Melakukan mapping untuk nilai String pada status subsektor Perkebunan perusahaan.
+     * @param mapped Nilai inputan String yang akan di mapping
+     * @return Nilai kondisi perusahaan yang sesuai pada class KondisiPerusahaanMap.
+     */
     public static String map(String mapped){
         return PerkebunanMap.getInstance().getValue(mapped);
     }
     
+    /**
+     * Merupakan method untuk menampilkan seluruh informasi terkait status perusahaan dan subsektor perusahaan tersebut.
+     * @return {@code String} Merupakan informasi terkait informasi kunjungan, kondisi, status subsektor tanaman pangan, 
+     *                        hortikultura, perkebunan, peternakan, kehutanan, dan perikanan suatu perusahaan di database.
+     */
     @Override
     public String toString()
     {
@@ -149,10 +236,17 @@ public class QuestionnaireData {
     }
 }
 
+/**
+ * Merupakan kelas untuk membuat hashmap yang akan digunakan dalam validasi Kondisi Perusahaan.
+ * @author Kelompok 6 DPP: Muhammad Julian Firdaus
+ */
 final class KondisiPerusahaanMap {
     private static final KondisiPerusahaanMap INSTANCE = new KondisiPerusahaanMap();
     private final HashMap<Integer, String> map = new HashMap<>();
-
+    
+    /**
+     * Merupakan berbagai inputan yang valid dalam pengisian kolom Kondisi Perusahaan.
+     */
     private KondisiPerusahaanMap() {
         map.put(1, "Aktif");
         map.put(2, "Tutup Sementara/Tidak Ada Kegiatan");
@@ -166,21 +260,37 @@ final class KondisiPerusahaanMap {
         map.put(0, "NA");
     }
 
+    /**
+     * Merupakan method untuk mengambil instance dari Kondisi Perusahaan yang diinput di dalam database.
+     * @return Instance hashmap KondisiPerusahaan.
+     */
     public static KondisiPerusahaanMap getInstance() {
         return INSTANCE;
     }
 
+    /**
+     * Merupakan method untuk mengambil nilai dari Kondisi Perusahaan di dalam database.
+     * @param key Nilai inputan yang akan di mapping.
+     * @return Hasil mapping dari parameter yang diberikan.
+     */
     public String getValue(int key) {
         return map.get(key);
     }
 }
 
+/**
+ * Merupakan class untuk membuat hashmap yang akan digunakan untuk memvalidasi subsektor Perkebunan.
+ * @author Kelompok 6 DPP: Muhammad Julian Firdaus
+ */
 final class PerkebunanMap {
     private static final PerkebunanMap INSTANCE = new PerkebunanMap();
     private final HashMap<String, String> map = new HashMap<>();
 
+    /**
+     * Merupakan berbagai inputan bertipe String yang akan dimapping menjadi value yang sesuai.
+     */
     private PerkebunanMap() {
-        map.put("3a","Kakao/Cokelat");
+        map.put("3a", "Kakao/Cokelat");
         map.put("3b", "Karet");
         map.put("3c", "Kelapa Sawit");
         map.put("3d", "Kopi");
@@ -191,13 +301,22 @@ final class PerkebunanMap {
         map.put("3i", "Kelapa");
         map.put("3j", "Lada");
         map.put("3k", "Tanaman Lainnya");
-        map.put("0", "NA");
+        map.put("0",  "Tidak Ada");
     }
 
+    /**
+     * Merupakan method untuk mengambil instance dari status Perkebunan yang diinput di dalam database.
+     * @return Instance hashmap perkebunan.
+     */
     public static PerkebunanMap getInstance() {
         return INSTANCE;
     }
 
+    /**
+     * Merupakan method untuk mengambil nilai dari status Perkebunan di dalam database.
+     * @param key Nilai inputan yang akan di mapping.
+     * @return Hasil mapping dari parameter yang diberikan.
+     */
     public String getValue(String key) {
         return map.get(key);
     }
