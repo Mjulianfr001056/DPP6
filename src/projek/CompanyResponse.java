@@ -8,6 +8,7 @@ public class CompanyResponse {
 
     public CompanyResponse(QuestionnaireData questionnaireData) {
         this.questionnaireData = questionnaireData;
+        jenisUsahaUtama = "0";
     }
 
     public void setJenisUsahaUtama(String jenisUsahaUtama) throws QuestionnaireException {
@@ -39,6 +40,12 @@ public class CompanyResponse {
     public static String map(int mapped){
         return JenisUsahaUtamaMap.getInstance().getValue(mapped);
     }
+
+    @Override
+    public String toString() {
+        return questionnaireData.toString() +
+                "\nJenis usaha utama: " + map(Integer.parseInt(jenisUsahaUtama));
+    }
 }
 
 final class JenisUsahaUtamaMap {
@@ -46,6 +53,7 @@ final class JenisUsahaUtamaMap {
     private final HashMap<Integer, String> map = new HashMap<>();
 
     private JenisUsahaUtamaMap() {
+        map.put(0, "Tidak diketahui");
         map.put(1, "Tanaman Pangan");
         map.put(2, "Hortikultura");
         map.put(3, "Perkebunan");

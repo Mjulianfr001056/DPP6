@@ -43,16 +43,24 @@ public class Company {
         this.alamat = new CompanyAddress(alamat);
     }
     
-   public void setBentukBadanHukum(String bentukBadanHukum){
+    public void setBentukBadanHukum(String bentukBadanHukum){
        this.bentukBadanHukum = new CompanyBentukBadanHukum(bentukBadanHukum);
     }
-   
+
     public void setNomorFax(String nomorFax){
         this.nomorFax = new NomorFaksimile(nomorFax);
     }
-    
+
     public void setNomorTelefon(String nomorTelefon){
         this.nomorTelefon = new NomorTelepon(nomorTelefon);
     }
-    
+
+    @Override
+    public String toString() {
+        return "Nama perusahaan: " + nama.getAttribute() +
+                "\nAlamat perusahaan: " + alamat.getAttribute() +
+                "\nBentuk badan hukum perusahaan: " + bentukBadanHukum.getAttribute() +
+                "\nNomor faksimile: " + nomorFax.getNomorKontak() +
+                "\nNomor telefon: " + nomorTelefon.getNomorKontak();
+    }
 }
