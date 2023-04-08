@@ -225,14 +225,14 @@ public class QuestionnaireData {
     @Override
     public String toString()
     {
-        return "Informasi Kunjungan : "+ map(getConfirmed())+
-                "\nKondisi Perusahaan : "+map(getKondisiPerusahaan())+
-                "\nTanaman Pangan : "+map(getTanamanPangan())+
-                "\nHortikultura : "+map(getHortikultura())+
-                "\nPerkebunan : "+map(getPerkebunan())+
-                "\nPeternakan : "+map(getPeternakan())+
-                "\nKehutanan : "+map(getKehutanan())+
-                "\nPerikanan : "+map(getPerikanan());
+        return "Informasi Kunjungan: \u001B[33m"+ map(getConfirmed())+
+                "\u001B[0m\nKondisi Perusahaan: \u001B[33m"+map(getKondisiPerusahaan())+
+                "\u001B[0m\nTanaman Pangan: \u001B[33m"+map(getTanamanPangan())+
+                "\u001B[0m\nHortikultura: \u001B[33m"+map(getHortikultura())+
+                "\u001B[0m\nPerkebunan: \u001B[33m"+map(getPerkebunan())+
+                "\u001B[0m\nPeternakan: \u001B[33m"+map(getPeternakan())+
+                "\u001B[0m\nKehutanan: \u001B[33m"+map(getKehutanan())+
+                "\u001B[0m\nPerikanan: \u001B[33m"+map(getPerikanan()) + "\u001B[0m";
     }
 }
 
@@ -257,7 +257,7 @@ final class KondisiPerusahaanMap {
         map.put(7, "Tidak Ditemukan");
         map.put(8, "Baru");
         map.put(9, "Ganda");
-        map.put(0, "NA");
+        map.put(0, "N/A");
     }
 
     /**
@@ -301,7 +301,7 @@ final class PerkebunanMap {
         map.put("3i", "Kelapa");
         map.put("3j", "Lada");
         map.put("3k", "Tanaman Lainnya");
-        map.put("0",  "Tidak Ada");
+        map.put("0",  "Tidak");
     }
 
     /**
