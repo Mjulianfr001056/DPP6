@@ -154,10 +154,10 @@ public class KIP {
      */
     @Override
     public String toString(){
-        return "Kode Provinsi: " + getKodeProvinsi() +
-                "\nKode Kabupaten: " + getKodeKabupaten() +
-                "\nKode Kecamatan: " + getKodeKecamatan() +
-                "\nKode KJU: " + getKodeKJU() +
-                "\nNo. Urut: " + getNoUrutKabupatenKota();
+        return "Kode Provinsi: \u001B[33m" + getKodeProvinsi() +
+                "\u001B[0m\nKode Kabupaten: \u001B[33m" + getKodeKabupaten() +
+                "\u001B[0m\nKode Kecamatan: \u001B[33m" + getKodeKecamatan() +
+                "\u001B[0m\nKode KJU: \u001B[33m" + getKodeKJU() +
+                "\u001B[0m\nNo. Urut: \u001B[33m" + getNoUrutKabupatenKota() + "\u001B[0m";
     }
 }

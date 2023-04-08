@@ -9,9 +9,10 @@ public record CompanyData(KIP kip, Company company, CompanyResponse companyRespo
 
     @Override
     public String toString() {
-        return  "######Perusahaan pertanian ke-" + nomor + "#####" +
-                "\n#####KIP#####\n" + kip.toString() +
-                "\n\n#####Informasi Perusahaan#####\n" + company.toString() +
+        return  "\u001B[94m######Perusahaan pertanian ke-\u001B[0m" + nomor +
+                "\u001B[94m#####\u001B[0m" +
+                "\u001B[94m\n#####KIP#####\n\u001B[0m" + kip.toString() +
+                "\u001B[94m\n\n#####Informasi Perusahaan#####\n\u001B[0m" + company.toString() +
                 "\n" + companyResponse.toString();
     }
 }

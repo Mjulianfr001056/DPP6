@@ -44,7 +44,7 @@ public class CompanyResponse {
     @Override
     public String toString() {
         return questionnaireData.toString() +
-                "\nJenis usaha utama: " + map(Integer.parseInt(jenisUsahaUtama));
+                "\u001B[0m\nJenis usaha utama: \u001B[33m" + map(Integer.parseInt(jenisUsahaUtama)) + "\u001B[0m";
     }
 }
 
