@@ -63,7 +63,7 @@ class CompanyBentukBadanHukum implements CompanyValidator{
 
     @Override
     public String isValid(String attribute) throws CompanyException {
-        if(!attribute.matches("[0-9][0-9]")){
+        if(!attribute.matches("^[1-9]|10$")){
             throw new CompanyException("Bentuk Badan Hukum tidak sesuai!");
         }
         return attribute;
