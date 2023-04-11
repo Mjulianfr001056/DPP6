@@ -1,5 +1,4 @@
 package projek;
-import projek.CompanyException;
 
 public interface CompanyValidator {
     String getAttribute();

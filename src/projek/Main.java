@@ -1,7 +1,6 @@
 package projek;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class Main {
@@ -13,7 +12,7 @@ public class Main {
     private static void validateNoUrut(String kodeProvinsi, String kodeKabupaten, String noUrut)
             throws QuestionnaireException{
         if (sheets.size()>0)
-        for (CompanyData companyData : sheets){
+            for (CompanyData companyData : sheets){
             String tmpKodeProvinsi = companyData.kip().getKodeProvinsi();
             String tmpKodeKabupaten = companyData.kip().getKodeKabupaten();
             String tmpNoUrut = companyData.kip().getNoUrutKabupatenKota();
@@ -44,7 +43,7 @@ public class Main {
         if (sheets.size() == 0)
             System.out.println("\033[31mTidak ada data yang dapat ditampilkan, harap lakukan input data terlebih dahulu!\033[0m\n");
         else
-            sheets.stream().forEach(data-> System.out.println(data + "\n"));
+            sheets.forEach(data-> System.out.println(data + "\n"));
     }
 
     public static void tampilMenu() {
@@ -70,35 +69,35 @@ public class Main {
             switch(menu) {
                 case "1" -> {
                     if(!headerFlag)
-                    try {
-                        System.out.println("\n\033[34m==================Bagian Header Kuesioner==================\033[0m");
-                        System.out.print("\033[0m");
-                        String tmpKodeProvinsi = "";
-                        String tmpKodeKabupaten = "";
-                        String periodeKuesioner = "";
+                        try {
+                            System.out.println("\n\033[34m==================Bagian Header Kuesioner==================\033[0m");
+                            System.out.print("\033[0m");
+                            String tmpKodeProvinsi = "";
+                            String tmpKodeKabupaten = "";
+                            String periodeKuesioner = "";
 
-                        System.out.print("Kode Provinsi: ");
-                        tmpKodeProvinsi = in.next();
-                        ClearInputBuffer(in);
+                            System.out.print("Kode Provinsi: ");
+                            tmpKodeProvinsi = in.next();
+                            ClearInputBuffer(in);
 
-                        System.out.print("Kode Kabupaten/Kota: ");
-                        tmpKodeKabupaten = in.next();
-                        ClearInputBuffer(in);
+                            System.out.print("Kode Kabupaten/Kota: ");
+                            tmpKodeKabupaten = in.next();
+                            ClearInputBuffer(in);
 
-                        System.out.print("Periode Kuesioner: ");
-                        periodeKuesioner = in.nextLine();
+                            System.out.print("Periode Kuesioner: ");
+                            periodeKuesioner = in.nextLine();
 
-                        KIPValidator kodeProvinsi = new KodeProvinsiValidator(tmpKodeProvinsi);
-                        KIPValidator kodeKabupaten = new KodeKabupatenValidator(tmpKodeKabupaten);
+                            KIPValidator kodeProvinsi = new KodeProvinsiValidator(tmpKodeProvinsi);
+                            KIPValidator kodeKabupaten = new KodeKabupatenValidator(tmpKodeKabupaten);
 
-                        questionnaireHeader = new QuestionnaireHeader(kodeProvinsi.getCode(),
-                                kodeKabupaten.getCode(),
-                                periodeKuesioner);
-                        headerFlag = true;
-                    }catch (Exception e) {
-                        System.out.println("\u001B[31m" + e.getMessage() + "\u001B[0m");
-                        break;
-                    }
+                            questionnaireHeader = new QuestionnaireHeader(kodeProvinsi.getCode(),
+                                    kodeKabupaten.getCode(),
+                                    periodeKuesioner);
+                            headerFlag = true;
+                        }catch (Exception e) {
+                            System.out.println("\u001B[31m" + e.getMessage() + "\u001B[0m");
+                            break;
+                        }
 
                     KIP kip = new KIP();
                     boolean quitFlag = false;
@@ -211,15 +210,16 @@ public class Main {
 
                             System.out.println("\u001B[94m================================\u001B[0m");
                             System.out.println("\nStatus perusahaan: ");
-                            System.out.println("\u001B[33m1. Aktif\n"
-                                    + "2. Tutup Sementara/Tidak Ada Kegiatan\n"
-                                    + "3. Belum Berproduksi\n"
-                                    + "4. Tidak Bersedia Diwawancarai\n"
-                                    + "5. Alih Usaha ke Non Pertanian\n"
-                                    + "6. Tutup\n"
-                                    + "7. Tidak Ditemukan\n"
-                                    + "8. Baru\n"
-                                    + "9. Ganda\u001B[0m");
+                            System.out.println("""
+                                    \u001B[33m1. Aktif
+                                    2. Tutup Sementara/Tidak Ada Kegiatan
+                                    3. Belum Berproduksi
+                                    4. Tidak Bersedia Diwawancarai
+                                    5. Alih Usaha ke Non Pertanian
+                                    6. Tutup
+                                    7. Tidak Ditemukan
+                                    8. Baru
+                                    9. Ganda\u001B[0m""");
                             System.out.print("Pilih Keterangan Terkait Perusahaan: ");
                             tmpKondisiPerusahaan = in.next();
 
@@ -239,64 +239,73 @@ public class Main {
 
                             System.out.println("\u001B[94m================================\u001B[0m");
                             System.out.println("\nPerusahaan dalam subsektor perkebunan? ");
-                            System.out.println("\u001B[33m0. Tidak\n"
-                                    + "\u001B[0m\nJika ya, spesialisasi subsektor adalah?\n"
-                                    + "\u001B[33m3a. Kakao/Cokelat\n"
-                                    + "3b. Karet\n"
-                                    + "3c. Kelapa Sawit\n"
-                                    + "3d. Kopi\n"
-                                    + "3e. Teh\n"
-                                    + "3f. Tebu\n"
-                                    + "3g. Tembakau\n"
-                                    + "3h. Cengkeh\n"
-                                    + "3i. Kelapa\n"
-                                    + "3j. Lada\n"
-                                    + "3k. Tanaman Lainnya\u001B[0m");
+                            System.out.println("""
+                                    \u001B[33m0. Tidak
+                                    \u001B[0m
+                                    Jika ya, spesialisasi subsektor adalah?
+                                    \u001B[33m3a. Kakao/Cokelat
+                                    3b. Karet
+                                    3c. Kelapa Sawit
+                                    3d. Kopi
+                                    3e. Teh
+                                    3f. Tebu
+                                    3g. Tembakau
+                                    3h. Cengkeh
+                                    3i. Kelapa
+                                    3j. Lada
+                                    3k. Tanaman Lainnya\u001B[0m""");
                             System.out.print("Jawab: ");
                             tmpPerkebunan = in.next();
 
                             System.out.println("\u001B[94m================================\u001B[0m");
                             System.out.println("\nPerusahaan dalam subsektor peternakan? ");
-                            System.out.println("\u001B[33m0. Tidak\n"
-                                    + "\u001B[0m\nJika ya, spesialisasi subsektor adalah?\n"
-                                    + "\033[33m1. Ternak Sapi Perah\n"
-                                    + "\033[33m2. Ternak Besar/Kecil\n"
-                                    + "\033[33m3. Unggas");
+                            System.out.println("""
+                                    \u001B[33m0. Tidak
+                                    \u001B[0m
+                                    Jika ya, spesialisasi subsektor adalah?
+                                    \033[33m1. Ternak Sapi Perah
+                                    \033[33m2. Ternak Besar/Kecil
+                                    \033[33m3. Unggas""");
                             System.out.print("\033[0mJawab: ");
                             tmpPeternakan = in.next();
 
                             System.out.println("\u001B[94m================================\u001B[0m");
                             System.out.println("\nPerusahaan dalam subsektor kehutanan? ");
-                            System.out.println("\u001B[33m0. Tidak\n"
-                                    + "\u001B[0m\nJika ya, spesialisasi subsektor adalah?\n"
-                                    + "\033[33m1. HPH/IUPHHK-HA\n"
-                                    + "\033[33m2. HPHT/IUPHHK-HT/Perhutani/Kehutanan lainnya\n"
-                                    + "\033[33m3. Penangkaran STL");
+                            System.out.println("""
+                                    \u001B[33m0. Tidak
+                                    \u001B[0m
+                                    Jika ya, spesialisasi subsektor adalah?
+                                    \033[33m1. HPH/IUPHHK-HA
+                                    \033[33m2. HPHT/IUPHHK-HT/Perhutani/Kehutanan lainnya
+                                    \033[33m3. Penangkaran STL""");
                             System.out.print("\033[0mJawab: ");
                             tmpKehutanan = in.next();
 
                             System.out.println("\u001B[94m================================\u001B[0m");
                             System.out.println("\nPerusahaan dalam subsektor perikanan? ");
-                            System.out.println("\u001B[33m0. Tidak\n"
-                                    + "\u001B[0m\nJika ya, spesialisasi subsektor adalah?\n"
-                                    + "\033[33m1. Budidaya Udang\n"
-                                    + "\033[33m2. Budidaya Bandeng\n"
-                                    + "\033[33m3. Budidaya Ikan Lainnya di Tambak\n"
-                                    + "\033[33m4. Budidaya Ikan di Laut\n"
-                                    + "\033[33m5. Budidaya Ikan di Air Tawar\n"
-                                    + "\033[33m6. Budidaya Pembenihan\n"
-                                    + "\033[33m7. Penangkapan Ikan");
+                            System.out.println("""
+                                    \u001B[33m0. Tidak
+                                    \u001B[0m
+                                    Jika ya, spesialisasi subsektor adalah?
+                                    \033[33m1. Budidaya Udang
+                                    \033[33m2. Budidaya Bandeng
+                                    \033[33m3. Budidaya Ikan Lainnya di Tambak
+                                    \033[33m4. Budidaya Ikan di Laut
+                                    \033[33m5. Budidaya Ikan di Air Tawar
+                                    \033[33m6. Budidaya Pembenihan
+                                    \033[33m7. Penangkapan Ikan""");
                             System.out.print("\033[0mJawab: ");
                             tmpPerikanan = in.next();
 
                             System.out.println("\u001B[94m================================\u001B[0m");
                             System.out.println("\nJenis Usaha Utama: ");
-                            System.out.println("\033[33m1. Tanaman Pangan\n"
-                                    + "\033[33m2. Holtikultura\n"
-                                    + "\033[33m3. Perkebunan\n"
-                                    + "\033[33m4. Kehutanan\n"
-                                    + "\033[33m5. Perikanan\n"
-                                    + "\033[33m6. Peternakan");
+                            System.out.println("""
+                                    \033[33m1. Tanaman Pangan
+                                    \033[33m2. Holtikultura
+                                    \033[33m3. Perkebunan
+                                    \033[33m4. Kehutanan
+                                    \033[33m5. Perikanan
+                                    \033[33m6. Peternakan""");
                             System.out.print("\033[0mPilih keterangan jenis usaha utama perusahaan: ");
                             tmpJenisUsahaUtama = in.next();
                             ClearInputBuffer(in);
@@ -342,7 +351,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
         System.out.println("\033[34m=======================================");
         System.out.println("== Program Entri Data Kuesioner DPP ==");
         System.out.println("=======================================");
