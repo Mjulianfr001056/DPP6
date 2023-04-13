@@ -5,7 +5,7 @@
 package projek;
 
 /** 
- * Merupakan sebuah class yang berfungsi untuk mrnyimpan dan mencetak nomor faksimile
+ * Merupakan sebuah class yang berfungsi untuk menyimpan nomor faksimile
  * class ini meng-extends abstract class NomorKontak
  * @author Kelompok 6 DPP : Natalie Merry Angelina
  */
