@@ -16,7 +16,6 @@ public class NomorFaksimile extends NomorKontak{
         }catch (InvalidNumberException e){
             System.out.println(e.getMessage());
         }
-
     }
 
     /**
