@@ -2,13 +2,29 @@ package projek;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+ * Merupakan kelas utama dari program yang berisi proses terkait bagaimana program akan dijalankan.
+ * 
+ * @author KELOMPOK 6 DPP : Rizky Rahmadani
+ */
 public class Main {
+    /**
+     * Merupakan method untuk membersihkan layar setelah klik enter
+     * @param scanner nilai yang diinputkan.
+     */
     private static void ClearInputBuffer(Scanner scanner) {
         scanner.skip(".*\n");
     }
     private static ArrayList<CompanyData> sheets = new ArrayList<>();
 
+    /**
+     * Method untuk memvalidasi no urut perusahaan sebagai responden agar tidak ada duplikasi no urut..
+     * akan menyimpan no urut perusahaan yang dicacah berdasarkan kombinasi kode Provinsi dan Kode kabupaten sebagai key.
+     * @param kodeProvinsi              Kode Provinsi dimana perusahaan itu berada
+     * @param kodeKabupaten             Kode Kabupaten/Kota dimana perusahaan itu berada.
+     * @param noUrut                    No urut perusahaan itu dalam pencacahan di suatu kabupaten/kota.
+     * @throws QuestionnaireException   Pesan yang dilemparkan saat ada kesalahan pengisian kuesioner.
+     */
     private static void validateNoUrut(String kodeProvinsi, String kodeKabupaten, String noUrut)
             throws QuestionnaireException{
         if (sheets.size()>0)
@@ -22,23 +38,32 @@ public class Main {
             noUrut.equalsIgnoreCase(tmpNoUrut)) throw new QuestionnaireException("No urut sudah digunakan!");
         }
     }
-
+    
     private static QuestionnaireHeader questionnaireHeader =
             new QuestionnaireHeader("00", "00", "00");
     private static boolean headerFlag = false;
 
+    /**
+     * Method untuk menampilkan header yang terdiri dari Kode Provinsi,Kode Kabupaten,dan Periode Kuesioner.
+     * jika telah ada datanya maka akan ditampilkan ,jika belum maka akan terisi pesan "Belum disetel" 
+     * header flag berfungsi menandai apakah no urut tertentu sudah di isi atau belum.
+     */
     private static void tampilHeader(){
         if (headerFlag){
             System.out.println("Kode Provinsi: \u001B[94m" + questionnaireHeader.kodeProvinsi());
             System.out.println("\u001B[0mKode Kabupaten: \u001B[94m" + questionnaireHeader.kodeKabupaten());
             System.out.println("\u001B[0mPeriode Kuesioner: \u001B[94m" + questionnaireHeader.tanggal() + "\u001B[0m");
-        }else{
+         }else{
             System.out.println("Kode Provinsi: \033[31m[Belum disetel]\033[0m");
             System.out.println("Kode Kabupaten: \033[31m[Belum disetel]\033[0m");
             System.out.println("Periode Kuesioner: \033[31m[Belum disetel]\033[0m");
         }
     }
-
+    
+    /**
+     * Method untuk menampilkan semua data yang tersimpan dalam sistem program.
+     * Muncul pesan jika tidak terdapat data yang tersimpan.
+    */
     public static void printData(){
         if (sheets.size() == 0)
             System.out.println("\033[31mTidak ada data yang dapat ditampilkan, harap lakukan input data terlebih dahulu!\033[0m\n");
@@ -46,6 +71,11 @@ public class Main {
             sheets.forEach(data-> System.out.println(data + "\n"));
     }
 
+    /**
+     * Method yang berisi alur pengisian data perusahaan pada kuesioner DPP.
+     * Terdapat beberapa menu pilihan seperti input data,lihat data, dan keluar.
+     * Pilihan akan menentukan proses apa yang akan dijalankan menggunakan switch case.
+    */
     public static void tampilMenu() {
 
         Scanner in = new Scanner(System.in);
@@ -99,6 +129,15 @@ public class Main {
                             break;
                         }
 
+                    /**
+                     * Proses perulangan untuk mengisi Kode Identitas Perusahaan yang terdiri dari :
+                     * Kode Provinsi,
+                     * Kode Kabupaten,
+                     * Kode Kecamatan,
+                     * Kode KJU,
+                     * Nomor Urut dalam 1 Kabupaten / Kota.
+                     * Terdapat proses pemanggilan method validasi no urut untuk kesesuaian.
+                     */
                     KIP kip = new KIP();
                     boolean quitFlag = false;
                     do {
@@ -140,6 +179,15 @@ public class Main {
                         }
                     }while(!quitFlag);
 
+                    /**
+                     * Proses perulangan untuk mengeset isian informasi perusahaan yang terdiri :
+                     * NamaPerusahaan
+                     * AlamatPerusahaan
+                     * NomorTelepon
+                     * NomorFaksimili
+                     * BentukBadanHukum
+                     * 
+                     */
                     Company company = new Company();
                     do{
                         try{
@@ -179,7 +227,21 @@ public class Main {
                             quitFlag = false;
                         }
                     }while(!quitFlag);
-
+ 
+                    /**
+                     * Bagian yang berisi proses pengisian data perusahaan pada kolom 12 
+                     * sampai kolom 20 pada kuesioner DPP. 
+                     * Kolom 12 : Pengisian Status Konfirmasi Kunjungan. Jika Belum dikunjungi/bernilai 0 maka program akan berhenti.
+                     * Kolom 13 : Kondisi Perusahaan terdiri dari pilihan (1-9)
+                     * Kolom 14 : Tanaman Pangan (Ya=1,Tidak=0)
+                     * Kolom 15 : Hortikultura (Ya=1,Tidak=0)
+                     * Kolom 16 : Perkebunan (3a-3k dan 0=Tidak)
+                     * Kolom 17 : Peternakan (Jika Ya pilih antara 1-3 dan 0 = Tidak)
+                     * Kolom 18 : Kehutanan (Jika Ya pilih antara 1-3 dan 0 = Tidak)
+                     * Kolom 19 : Perikanan (Jika Ya pilih antara 1-7 dan 0 = Tidak)
+                     * Kolom 20 : Jenis Usaha Utama (Pilih antara 1-6)
+                     * 
+                     */
                     QuestionnaireData questionnaireData = new QuestionnaireData();
                     CompanyResponse companyResponse = new CompanyResponse(questionnaireData);
                     quitFlag = false;
