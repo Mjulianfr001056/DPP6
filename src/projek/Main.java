@@ -9,8 +9,8 @@ import java.util.Scanner;
  */
 public class Main {
     /**
-     * Merupakan method untuk membersihkan layar setelah klik enter
-     * @param scanner nilai yang diinputkan.
+     * Merupakan method untuk membersihkan Scanner setelah newline
+     * @param scanner Scanner class yang digunakan
      */
     private static void ClearInputBuffer(Scanner scanner) {
         scanner.skip(".*\n");
