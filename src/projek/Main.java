@@ -29,13 +29,13 @@ public class Main {
 
     private static void tampilHeader(){
         if (headerFlag){
-            System.out.println("Kode Provinsi: \u001B[94m" + questionnaireHeader.kodeProvinsi());
-            System.out.println("\u001B[0mKode Kabupaten: \u001B[94m" + questionnaireHeader.kodeKabupaten());
-            System.out.println("\u001B[0mPeriode Kuesioner: \u001B[94m" + questionnaireHeader.tanggal() + "\u001B[0m");
+            System.out.println("Kode Provinsi      : \u001B[94m" + questionnaireHeader.kodeProvinsi());
+            System.out.println("\u001B[0mKode Kabupaten     : \u001B[94m" + questionnaireHeader.kodeKabupaten());
+            System.out.println("\u001B[0mPeriode Kuesioner  : \u001B[94m" + questionnaireHeader.tanggal() + "\u001B[0m");
         }else{
-            System.out.println("Kode Provinsi: \033[31m[Belum disetel]\033[0m");
-            System.out.println("Kode Kabupaten: \033[31m[Belum disetel]\033[0m");
-            System.out.println("Periode Kuesioner: \033[31m[Belum disetel]\033[0m");
+            System.out.println("Kode Provinsi      : \033[31m[Belum disetel]\033[0m");
+            System.out.println("Kode Kabupaten     : \033[31m[Belum disetel]\033[0m");
+            System.out.println("Periode Kuesioner  : \033[31m[Belum disetel]\033[0m");
         }
     }
 
@@ -76,15 +76,15 @@ public class Main {
                             String tmpKodeKabupaten = "";
                             String periodeKuesioner = "";
 
-                            System.out.print("Kode Provinsi: ");
+                            System.out.print("Kode Provinsi        : ");
                             tmpKodeProvinsi = in.next();
                             ClearInputBuffer(in);
 
-                            System.out.print("Kode Kabupaten/Kota: ");
+                            System.out.print("Kode Kabupaten/Kota  : ");
                             tmpKodeKabupaten = in.next();
                             ClearInputBuffer(in);
 
-                            System.out.print("Periode Kuesioner: ");
+                            System.out.print("Periode Kuesioner    : ");
                             periodeKuesioner = in.nextLine();
 
                             KIPValidator kodeProvinsi = new KodeProvinsiValidator(tmpKodeProvinsi);
@@ -111,23 +111,23 @@ public class Main {
                             String tmpKodeKJU = "";
                             String tmpNoUrut = "";
 
-                            System.out.print("Kode Provinsi: ");
+                            System.out.print("Kode Provinsi                        : ");
                             tmpKodeProvinsi = in.next();
                             ClearInputBuffer(in);
 
-                            System.out.print("Kode Kabupaten/Kota: ");
+                            System.out.print("Kode Kabupaten/Kota                  : ");
                             tmpKodeKabupaten = in.next();
                             ClearInputBuffer(in);
 
-                            System.out.print("Kode Kecamatan: ");
+                            System.out.print("Kode Kecamatan                       : ");
                             tmpKodeKecamatan = in.next();
                             ClearInputBuffer(in);
 
-                            System.out.print("Kode KJU: ");
+                            System.out.print("Kode KJU                             : ");
                             tmpKodeKJU = in.next();
                             ClearInputBuffer(in);
 
-                            System.out.print("Nomor Urut dalam Satu Kabupaten/Kota: ");
+                            System.out.print("Nomor Urut dalam Satu Kabupaten/Kota : ");
                             tmpNoUrut = in.next();
                             ClearInputBuffer(in);
 
@@ -151,21 +151,21 @@ public class Main {
 
                             System.out.println("\n\033[34m===============Bagian Informasi Perusahaan 2================\033[0m");
                             System.out.print("\033[0m");
-                            System.out.print("Nama Perusahaan Pertanian: ");
+                            System.out.print("Nama Perusahaan Pertanian    : ");
                             tmpNamaPerusahaan = in.nextLine();
 
-                            System.out.print("Alamat Perusahaan Pertanian: ");
+                            System.out.print("Alamat Perusahaan Pertanian  : ");
                             tmpAlamatPerusahaan = in.nextLine();
 
-                            System.out.print("Nomor Telepon: ");
-                            tmpNomorTelepon = in.next();
+                            System.out.print("Nomor Telepon                : ");
+                            tmpNomorTelepon = in.next(); 
                             ClearInputBuffer(in);
 
-                            System.out.print("Nomor Faksimili: ");
+                            System.out.print("Nomor Faksimili              : ");
                             tmpNomorFaksimili = in.next();
                             ClearInputBuffer(in);
 
-                            System.out.print("Bentuk Badan Hukum: ");
+                            System.out.print("Bentuk Badan Hukum           : ");
                             tmpBentukBadanHukum = in.nextLine();
 
                             company.setNama(tmpNamaPerusahaan);
