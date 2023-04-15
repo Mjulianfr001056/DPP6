@@ -10,19 +10,16 @@ package projek;
  * @author Kelompok 6 DPP : Natalie Merry Angelina
  */
 public class NomorFaksimile extends NomorKontak{
-    public NomorFaksimile(String nomorKontak){
-        try{
-            super.nomorKontak = new FaximileValidator(nomorKontak);
-        }catch (InvalidNumberException e){
-            System.out.println(e.getMessage());
-        }
-    }
 
     /**
      * Merupakan method untuk mencetak nomor faksimile
      * format nomor faksimile yang dicetak adalah (3 digit) digit yang tersisa
      * contoh (021)777643
      */
+    public NomorFaksimile(String nomorKontak) throws InvalidNumberException {
+        super.nomorKontak = new FaximileValidator(nomorKontak);
+    }
+
     @Override
     public void cetakNomor() {
         String nomorKontak = super.getNomorKontak();

@@ -1,8 +1,10 @@
 package projek;
 
+import java.lang.annotation.Inherited;
+
 public interface QuestionnaireValidator<R> {
     R getAttribute();
-    boolean isValid(String attributes) throws QuestionnaireException;
+    R isValid(String attributes) throws QuestionnaireException;
 }
 
 class BooleanField implements QuestionnaireValidator<Boolean> {
@@ -10,25 +12,66 @@ class BooleanField implements QuestionnaireValidator<Boolean> {
 
     public BooleanField(String attribute) throws QuestionnaireException{
         this.attribute = isValid(attribute);
-    }
+   }
 
     @Override
     public Boolean getAttribute() {
         return attribute;
     }
 
+    public Boolean isValid(String attributes) throws QuestionnaireException {
+        
+        if (attributes.equalsIgnoreCase("1"))
+           return true;
+         else if (attributes.equalsIgnoreCase("0"))
+            return false;
+        else 
+            throw new QuestionnaireException("Inputan Anda salah");
+              
+    }
+
+}
+
+
+//Integer Field
+
+class IntegerField implements QuestionnaireValidator<Integer> {
+    private Integer attribute;
+    
+    public IntegerField(String attribute) throws QuestionnaireException{
+        this.attribute = isValid(attribute);
+    }
+
     @Override
-    public boolean isValid(String attributes) throws QuestionnaireException {
-        // implementation
-        /*
-        TODO confirmation
-        Buat validasi klo yang dimasukkan itu 1 atau 0
-         */
-        return false;
+    public Integer getAttribute() {
+        return attribute;  
+    }
+    
+    public Integer isValid(String attributes) throws QuestionnaireException {
+       if (!(attributes.matches("\\d") || attributes.matches("[123456789]")))
+       {
+            throw new QuestionnaireException("Inputan Anda salah");
+       }
+         else {
+           return Integer.parseInt(attributes);
+       }
     }
 }
 
-/*
-TODO buat IntegerField class
-Buat field untuk integer
- */
+class StringField implements QuestionnaireValidator<String> {
+    private String attribute;
+
+    public StringField(String attribute) throws QuestionnaireException{
+       this.attribute = isValid(attribute);         
+   }
+
+    @Override
+    public String getAttribute() {
+        return attribute;
+    }
+    public String isValid(String attributes) throws QuestionnaireException {
+        if (!(attributes.matches("3a|3b|3c|3d|3e|3f|3g|3h|3i|3j|3k|0")))
+            throw new QuestionnaireException("Input anda Salah");
+        else return attributes;
+    }
+}

@@ -13,12 +13,8 @@ public class NomorTelepon extends NomorKontak{
     public NomorTelepon() {
     }
 
-    public NomorTelepon(String nomor){
-        try{
-            super.nomorKontak = new TelephoneValidator(nomor);
-        }catch (InvalidNumberException e){
-            System.out.println(e.getMessage());
-        }
+    public NomorTelepon(String nomor) throws InvalidNumberException {
+        super.nomorKontak = new TelephoneValidator(nomor);
     }
     
      /**
