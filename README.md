@@ -2,7 +2,7 @@
 
 ## Pemrograman Berorientasi Objek
 
-#### Penulis Kode Sumber :sun with face:
+#### Penulis Kode Sumber :sun_with_face:
 ##### Kelompok 6
 1. Muhammad Julian Firdaus - 222112217 :boy:
 2. Muhammad Restu Ilahi - 222112222 :boy:
