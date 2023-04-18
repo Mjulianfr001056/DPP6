@@ -1,4 +1,5 @@
-# Aplikasi Validator Updating Direktori Perusahaan Pertanian Berbadan Hukum
+# Aplikasi Updating Direktori Perusahaan Pertanian Berbadan Hukum
+Updating Direktori Perusahaan Pertanian adalah salah satu rangkaian kegiatan dari ST2023 yang dilakukan tahun 2022. Tujuan dari Updating DPP adalah untuk memperoleh direktori yang lengkap dan terkini dari perusahaan pertanian yang akan digunakan sebagai dasar pencacahan lengkap pada tahun 2023.
 
 ## Pemrograman Berorientasi Objek
 
@@ -13,8 +14,10 @@
 
 
 ## Deskripsi Singkat :milky_way:
-Aplikasi validator ini merupakan program yang akan memvalidasi apakah inputan yangdimasukkan user ke dalam form Updating Direktori Perusahaan Pertanian Berbadan Hukum tersebut sudah benar dan sesuai dengan nilai yang ditentukan atau belum. Dalam form tersebut terdapat 20 kolom yang harus diisi responden. Berikut tampilan formulir dari Updating Direktori Perusahaan Pertanian Berbadan Hukum.
+Aplikasi ini digunakan untuk mengumpulkan dan menyimpan data perusahaan pertanian pada sensus pertanian guna melakukan pembaharuan data direktori pertanian. Aplikasi ini juga menggunakan validator yang akan memvalidasi apakah inputan yang dimasukkan user ke dalam form Updating Direktori Perusahaan Pertanian Berbadan Hukum tersebut sudah benar dan sesuai dengan nilai yang ditentukan atau belum. Dalam form tersebut terdapat 20 kolom yang harus diisi responden. Berikut tampilan formulir dari Updating Direktori Perusahaan Pertanian Berbadan Hukum.
+
 ![Formulir](./res/Formulir.jpg)
+
 Pada gambar tersebut tampak ada 20 kolom yang harus diisi oleh petugas ataupun responden ketika proses wawancara. Jawaban yang akan diisikan ke dalam kolom tersebut ditentukan karena pertanyaan yang diajukan merupakan pertanyaan tertutup. Untuk itu, diperlukan validator demi menghindari jawaban yang diinput merupakan jawaban yang tidak sesuai dan tidak diharapkan. 
 
 ## UML Diagram :bar_chart:
@@ -79,7 +82,44 @@ Pada form Updating Direktori Perusahaan Pertanian Berbadan Hukum tersebut terdap
 - Bentuk Badan Hukum harus berupa angka
 - Inputan hanya berupa angka 1-10 jika perusahaan punya Bentuk Badan Hukum yang ada di daftar.
 
-##### 12. Pencacahan dengan Kuesioner Rutin
+##### 12. Status Kunjungan
+- Kolom PStatus Kunjungan berupa pilihan Ya atau Tidak.
+- Nilai yang diizinkan 1 (Ya) dan 0 (Tidak).
+- Jika pilihan 0 artinya kolom 13-20 tidak bisa diperoleh nilainya.
+
+##### 13. Kondisi Perusahaan
+- Kondisi Perusahaan harus berupa angka.
+- Inputan angka terbatas pada rentang 1-9
+- Setiap angka mewakili jawaban sesuai yang tertera pada daftar jawaban kolom 13 kuesioner DPP.
+
+##### 14. Tanaman Pangan 
+- Kolom Tanaman Pangan berupa pilihan Ya atau Tidak.
+- Nilai yang diizinkan 1 (Ya) dan 0 (Tidak).
+
+##### 15. Hortikultura
+- Kolom Hortikultura berupa pilihan Ya atau Tidak.
+- Nilai yang diizinkan 1 (Ya) dan 0 (Tidak).
+
+##### 16. Perkebunan
+- Kolom perkebunan berupa kombinasi huruf dan angka.
+- Nilai yang diizinkan dari 3a-3k dan 0 untuk jawaban tidak ada.
+- Keterangan nilai inputan terdapat di kolom 16 kuesioner DPP.
+
+##### 17. Peternakan
+- Kolom Perkebunan berupa pilihan Ya atau Tidak.
+- Nilai yang diizinkan 1 (Ya) dan 0 (Tidak).
+
+##### 18. Kehutanan
+- Kolom kehutanan berupa pilihan Ya atau Tidak.
+- Nilai yang diizinkan 1 (Ya) dan 0 (Tidak).
+
+##### 19. Perikanan
+- Kolom Perikanan berupa pilihan Ya atau Tidak.
+- Nilai yang diizinkan 1 (Ya) dan 0 (Tidak).
+
+##### 20. Jenis Usaha Utama
+- Kolom ini berisi huruf dan spasi.
+- Isian yang dibolehkan terdapat pada daftar pilihan.
 
 
 ## Referensi :books:
