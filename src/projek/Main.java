@@ -6,6 +6,7 @@ import java.util.Scanner;
  * Merupakan kelas utama dari program yang berisi proses terkait bagaimana program akan dijalankan.
  * 
  * @author KELOMPOK 6 DPP : Rizky Rahmadani
+ * @author KELOMPOK 6 DPP : Sabilla Hamda Syahputri
  */
 public class Main {
     /**
@@ -102,9 +103,9 @@ public class Main {
                         try {
                             System.out.println("\n\033[34m==================Bagian Header Kuesioner==================\033[0m");
                             System.out.print("\033[0m");
-                            String tmpKodeProvinsi = "";
-                            String tmpKodeKabupaten = "";
-                            String periodeKuesioner = "";
+                            String tmpKodeProvinsi;
+                            String tmpKodeKabupaten;
+                            String periodeKuesioner;
 
                             System.out.print("Kode Provinsi        : ");
                             tmpKodeProvinsi = in.next();
@@ -129,26 +130,17 @@ public class Main {
                             break;
                         }
 
-                    /**
-                     * Proses perulangan untuk mengisi Kode Identitas Perusahaan yang terdiri dari :
-                     * Kode Provinsi,
-                     * Kode Kabupaten,
-                     * Kode Kecamatan,
-                     * Kode KJU,
-                     * Nomor Urut dalam 1 Kabupaten / Kota.
-                     * Terdapat proses pemanggilan method validasi no urut untuk kesesuaian.
-                     */
                     KIP kip = new KIP();
                     boolean quitFlag = false;
                     do {
                         try{
                             System.out.println("\n\033[34m===============Bagian Informasi Perusahaan 1================\033[0m");
                             System.out.print("\033[0m");
-                            String tmpKodeProvinsi = "";
-                            String tmpKodeKabupaten = "";
-                            String tmpKodeKecamatan = "";
-                            String tmpKodeKJU = "";
-                            String tmpNoUrut = "";
+                            String tmpKodeProvinsi;
+                            String tmpKodeKabupaten;
+                            String tmpKodeKecamatan;
+                            String tmpKodeKJU;
+                            String tmpNoUrut;
 
                             System.out.print("Kode Provinsi                        : ");
                             tmpKodeProvinsi = in.next();
@@ -179,23 +171,14 @@ public class Main {
                         }
                     }while(!quitFlag);
 
-                    /**
-                     * Proses perulangan untuk mengeset isian informasi perusahaan yang terdiri :
-                     * NamaPerusahaan
-                     * AlamatPerusahaan
-                     * NomorTelepon
-                     * NomorFaksimili
-                     * BentukBadanHukum
-                     * 
-                     */
                     Company company = new Company();
                     do{
                         try{
-                            String tmpNamaPerusahaan = "";
-                            String tmpAlamatPerusahaan = "";
-                            String tmpNomorTelepon = "";
-                            String tmpNomorFaksimili = "";
-                            String tmpBentukBadanHukum = "";
+                            String tmpNamaPerusahaan;
+                            String tmpAlamatPerusahaan;
+                            String tmpNomorTelepon;
+                            String tmpNomorFaksimili;
+                            String tmpBentukBadanHukum;
 
                             System.out.println("\n\033[34m===============Bagian Informasi Perusahaan 2================\033[0m");
                             System.out.print("\033[0m");
@@ -228,7 +211,7 @@ public class Main {
                         }
                     }while(!quitFlag);
  
-                    /**
+                    /*
                      * Bagian yang berisi proses pengisian data perusahaan pada kolom 12 
                      * sampai kolom 20 pada kuesioner DPP. 
                      * Kolom 12 : Pengisian Status Konfirmasi Kunjungan. Jika Belum dikunjungi/bernilai 0 maka program akan berhenti.
@@ -244,7 +227,6 @@ public class Main {
                      */
                     QuestionnaireData questionnaireData = new QuestionnaireData();
                     CompanyResponse companyResponse = new CompanyResponse(questionnaireData);
-                    quitFlag = false;
                     do {
                         try{
                             System.out.println("\n\033[34m================Bagian Respons Perusahaan================\033[0m");
@@ -261,14 +243,14 @@ public class Main {
                                 throw new QuestionnaireException("Input terdiri dari 0 atau 1 saja!");
                             }
 
-                            String tmpKondisiPerusahaan = "";
-                            String tmpTanamanPangan = "";
-                            String tmpHortikultura = "";
-                            String tmpPerkebunan = "";
-                            String tmpPeternakan = "";
-                            String tmpKehutanan = "";
-                            String tmpPerikanan = "";
-                            String tmpJenisUsahaUtama = "";
+                            String tmpKondisiPerusahaan;
+                            String tmpTanamanPangan;
+                            String tmpHortikultura;
+                            String tmpPerkebunan;
+                            String tmpPeternakan;
+                            String tmpKehutanan;
+                            String tmpPerikanan;
+                            String tmpJenisUsahaUtama;
 
                             System.out.println("\u001B[94m================================\u001B[0m");
                             System.out.println("\nStatus perusahaan: ");

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package projek;
 
 /**
@@ -22,7 +18,7 @@ abstract class NomorKontak {
     
     /**
      * Merupakan method untuk mencetak nomor (nomor telepon/nomor faksimile)
-     * * @return {@code String}   Berupa nomor yang ingin dicetak.
+     * @return {@code String}   Berupa nomor yang ingin dicetak.
      */
     abstract public void cetakNomor();
 }

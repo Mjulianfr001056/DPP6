@@ -1,7 +1,5 @@
 package projek;
 
-import java.lang.annotation.Inherited;
-
 /**
  *  Merupakan sebuah interface yang melakukan validasi terhadap keseluruhan variabel pertanyaan di dalam kelas QuestionnaireData, yaitu:
  * 1. confirmed, 

@@ -26,12 +26,6 @@ public interface ContactValidator {
 
 /**
  * Merupakan validator untuk mengecek apakah inputan nomor faksimile yang dimasukkan benar.
- * 
- * @param   nomor           Merupakan nomor faksimile yang diinput user.
- * @return  {@code String}  Jika telah tervalidasi, maka nomor faksimile akan disimpan ke dalam atribut nomor.
- * @throws  KIPException    Jika jumlah digit nomor faksimile kurang dari 8 atau
- *                          Jika jumlah digit lebih dari 15 atau
- *                          Jika digit pertama bukan nol.
  */
 class FaximileValidator implements ContactValidator{
     String nomor;
@@ -45,11 +39,16 @@ class FaximileValidator implements ContactValidator{
         return nomor;
     }
 
-    /*
-    * Validasi : 
-    * Nomor Faksimile panjangnya diantara 8 sampai 15 digit
-    * Nomor faksimile diawali dengan angka nol
-    */   
+    /**
+     * Merupakan method untuk mengecek kevalidan inputan user
+     * yang berupa nomor faksimile
+     *
+     * @param   nomor           Merupakan nomor faksimile yang diinput user.
+     * @return  {@code String}  Jika telah tervalidasi, maka nomor faksimile akan disimpan ke dalam atribut nomor.
+     * @throws  InvalidNumberException    Jika jumlah digit nomor faksimile kurang dari 8 atau
+     *                                    Jika jumlah digit lebih dari 15 atau
+     *                                    Jika digit pertama bukan nol.
+     */
     @Override
     public String isValid(String nomor) throws InvalidNumberException{
         if(nomor.length() >15 || nomor.length() <8 || !nomor.matches("0\\d+")){
@@ -60,12 +59,6 @@ class FaximileValidator implements ContactValidator{
 
 /**
  * Merupakan validator untuk mengecek apakah inputan nomor telepon yang dimasukkan benar.
- * 
- * @param   nomor           Merupakan nomor telepon yang diinput user.
- * @return  {@code String}  Jika telah tervalidasi, maka nomor telepon akan disimpan ke dalam atribut nomor.
- * @throws  KIPException    Jika jumlah digit nomor telepon kurang dari 8 atau
- *                          Jika jumlah digit lebih dari 15 atau
- *                          Jika digit pertama bukan nol.
  */
 class TelephoneValidator implements ContactValidator{
     String nomor;
@@ -79,11 +72,16 @@ class TelephoneValidator implements ContactValidator{
         return nomor;
     }
 
-     /*
-    * Validasi : 
-    * Nomor Telepon panjangnya diantara 8 sampai 15 digit
-    * Nomor Telepon diawali dengan angka nol
-    */ 
+    /**
+     * Merupakan method untuk mengecek kevalidan inputan user
+     * yang berupa nomor telepon
+     *
+     * @param   nomor           Merupakan nomor telepon yang diinput user.
+     * @return  {@code String}  Jika telah tervalidasi, maka nomor telepon akan disimpan ke dalam atribut nomor.
+     * @throws  InvalidNumberException    Jika jumlah digit nomor telepon kurang dari 8 atau
+     *                                    Jika jumlah digit lebih dari 15 atau
+     *                                    Jika digit pertama bukan nol.
+     */
     @Override
     public String isValid(String nomor) throws InvalidNumberException{
         if(nomor.length() >15 || nomor.length() <8 || !nomor.matches("0\\d+")){

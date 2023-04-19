@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package projek;
 
 /**
@@ -14,7 +10,6 @@ package projek;
  * @author KELOMPOK 6 DPP (Muhammad Restu Ilahi)
  */
 public class KIP {
-    //properties
     /**
      * Kode Provinsi dimana perusahaan itu berada.
      */
@@ -37,7 +32,6 @@ public class KIP {
      */
     private KIPValidator noUrutKabupatenKota;
 
-    //constructor
     public KIP() {
     }
 
@@ -58,7 +52,7 @@ public class KIP {
 
     /**
      * Method untuk mengambil kode provinsi dari suatu perusahaan di database.
-     * @return {@code String}   kode provinsi dari perusahaan.
+     * @return  {@code String}  kode provinsi dari perusahaan.
      */
     public String getKodeProvinsi() {
         return kodeProvinsi.getCode();
@@ -66,7 +60,7 @@ public class KIP {
 
     /**
      * Method untuk mengambil kode kabupaten dari suatu perusahaan di database.
-     * @return {@code String}   kode kabupaten dari perusahaan.
+     * @return  {@code String}  kode kabupaten dari perusahaan.
      */
     public String getKodeKabupaten() {
         return kodeKabupaten.getCode();
@@ -74,7 +68,7 @@ public class KIP {
 
     /**
      * Method untuk mengambil kode kecamatan dari suatu perusahaan di database.
-     * @return {@code String}   kode kecamatan dari perusahaan.
+     * @return  {@code String}  kode kecamatan dari perusahaan.
      */
     public String getKodeKecamatan() {
         return kodeKecamatan.getCode();
@@ -82,7 +76,7 @@ public class KIP {
 
     /**
      * Method untuk mengambil kode KJU dari suatu perusahaan di database.
-     * @return {@code String}   kode KJU dari perusahaan.
+     * @return  {@code String}  kode KJU dari perusahaan.
      */    
     public String getKodeKJU() {
         return kodeKJU.getCode();
@@ -90,7 +84,7 @@ public class KIP {
 
     /**
      * Method untuk mengambil no urut dari suatu perusahaan di database.
-     * @return {@code String}   no urut dari perusahaan.
+     * @return  {@code String}  no urut dari perusahaan.
      */
     public String getNoUrutKabupatenKota() {
         return noUrutKabupatenKota.getCode();
@@ -98,7 +92,7 @@ public class KIP {
 
     /**
      * Merupakan method untuk menyunting kode provinsi suatu perusahaan di database.
-     * @param kodeProvinsi      Merupakan nilai yang akan diinput ke kode provinsi.
+     * @param    kodeProvinsi    Merupakan nilai yang akan diinput ke kode provinsi.
      */
     public void setKodeProvinsi(String kodeProvinsi) {
         try {
@@ -110,7 +104,7 @@ public class KIP {
 
     /**
      * Merupakan method untuk menyunting kode kabupaten suatu perusahaan di database.
-     * @param kodeKabupaten      Merupakan nilai yang akan diinput ke kode kabupaten.
+     * @param    kodeKabupaten    Merupakan nilai yang akan diinput ke kode kabupaten.
      */
     public void setKodeKabupaten(String kodeKabupaten) {
         try {
@@ -123,7 +117,7 @@ public class KIP {
 
     /**
      * Merupakan method untuk menyunting kode kecamatan suatu perusahaan di database.
-     * @param kodeKecamatan      merupakan nilai yang akan diinput ke kode kecamatan.
+     * @param    kodeKecamatan    merupakan nilai yang akan diinput ke kode kecamatan.
      */    
     public void setKodeKecamatan(String kodeKecamatan) {
         try {
@@ -136,7 +130,7 @@ public class KIP {
 
     /**
      * Merupakan method untuk menyunting kode KJU suatu perusahaan di database.
-     * @param kodeKJU      merupakan nilai yang akan diinput ke kode KJU.
+     * @param    kodeKJU    merupakan nilai yang akan diinput ke kode KJU.
      */
     public void setKodeKJU(String kodeKJU) {
         try {
